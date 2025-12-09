@@ -1,17 +1,20 @@
-/* styles.css */
+/* global.css */
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 @theme {
-  --color-accent: #2337ff;
-  --color-accent-dark: #000d8a;
-  --color-gray: rgb(96, 115, 159);
-  --color-gray-light: rgb(229, 233, 240);
+  --color-accent: #E85A4F;
+  --color-accent-dark: #E98074;
+  --color-gray: #8E8D8A;
+  --color-gray-light: #D8C3A5;
   --color-gray-dark: rgb(34, 41, 57);
   --color-black: rgb(15, 18, 25);
-
+  
   --font-atkinson: "Atkinson", sans-serif;
-
-  --shadow-custom: 0 2px 6px rgba(96, 115, 159, 25%), 0 8px 24px rgba(96, 115, 159, 33%), 0 16px 32px rgba(96, 115, 159, 33%);
+  --font-mono: "Space Mono", monospace;
+  
+  /* Hard Brutalist Shadow */
+  --shadow-custom: 4px 4px 0px 0px var(--color-black);
 }
 
 @font-face {
@@ -32,8 +35,10 @@
 @layer base {
   body {
     @apply font-atkinson m-0 p-0 text-left text-gray-dark text-[20px] leading-[1.7] break-words;
-    background: linear-gradient(rgba(229, 233, 240, 0.5), #fff) no-repeat;
-    background-size: 100% 600px;
+    /* Tech Dot Grid Background */
+    background-image: radial-gradient(var(--color-gray-light) 1px, transparent 1px), linear-gradient(to bottom, rgba(216, 195, 165, 0.5), #EAE7DC);
+    background-size: 24px 24px, 100% 100%;
+    background-attachment: fixed;
     overflow-wrap: break-word;
   }
 
@@ -42,43 +47,47 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply m-0 mb-2 text-black leading-[1.2];
+    @apply font-mono uppercase tracking-tighter m-0 mb-4 text-black leading-[1.1];
   }
 
-  h1 { @apply text-[3.052em]; }
-  h2 { @apply text-[2.441em]; }
-  h3 { @apply text-[1.953em]; }
-  h4 { @apply text-[1.563em]; }
-  h5 { @apply text-[1.25em]; }
+  h1 { @apply text-[3em] font-bold border-b-4 border-black pb-2; }
+  h2 { @apply text-[2.2em] font-bold border-1 border-black p-2 shadow-custom bg-white; }
+  h3 { @apply text-[1.8em] font-bold; }
+  h4 { @apply text-[1.4em] font-bold border-l-4 border-accent pl-2; }
+  h5 { @apply text-[1.2em] font-bold; }
 
-  strong, b { @apply font-bold; }
+  strong, b { @apply font-bold text-black; }
 
-  a { @apply text-accent hover:text-accent; }
+  a { 
+    @apply font-mono text-accent hover:text-white hover:bg-accent transition-all no-underline border-b-2 border-accent hover:border-transparent px-1 -mx-1 rounded-none; 
+  }
 
-  p { @apply mb-4; }
+  p { @apply mb-6; }
 
   .prose p { @apply mb-8; }
 
-  textarea { @apply w-full text-base; }
-  input { @apply text-base; }
-  table { @apply w-full; }
+  textarea { @apply w-full text-base font-mono border-2 border-black p-2 shadow-custom focus:outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-none transition-all; }
+  input { @apply text-base font-mono border-2 border-black p-2 shadow-custom focus:outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-none transition-all; }
+  table { @apply w-full border-collapse border-2 border-black; }
+  th, td { @apply border border-black p-2 font-mono text-sm; }
 
-  img { @apply max-w-full h-auto rounded-lg; }
+  img { @apply max-w-full h-auto border-2 border-black shadow-custom rounded-none grayscale transition-all duration-300 hover:grayscale-0 hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]; }
 
-  code { @apply px-1.5 py-0.5 bg-gray-light rounded-xs; }
-
-  pre { @apply p-6 rounded-lg; }
+  code { @apply font-mono px-1.5 py-0.5 bg-gray-light/30 border border-gray text-sm; }
+  
+  pre { @apply p-6 border-2 border-black shadow-custom bg-white rounded-none overflow-x-auto; }
   pre > code { all: unset; }
 
   blockquote {
-    @apply border-l-4 border-accent pl-5 m-0 text-[1.333em];
+    @apply border-l-8 border-accent bg-white/50 p-6 m-0 text-[1.1em] font-mono italic shadow-sm;
   }
 
-  hr { @apply border-none border-t border-gray-light; }
+  hr { @apply border-none border-t-2 border-black my-8 border-dashed; }
 
   @media (max-width: 720px) {
     body { @apply text-lg; }
     main { @apply p-4; }
+    h1 { @apply text-[2.5em]; }
   }
 }
 
