@@ -3,9 +3,9 @@ const today = new Date();
 ---
 
 <footer>
-  &copy; {today.getFullYear()} Louis Casinelli. All rights reserved.
-  <div class="social-links">
-    <a href="https://github.com/avoidstarch" target="_blank">
+  &copy; {today.getFullYear()} Your name here. All rights reserved.
+  <div class="social-links flex justify-center gap-4 mt-4">
+    <a href="https://github.com/avoidstarch" target="_blank" class="no-underline text-gray hover:text-gray-dark">
       <span class="sr-only">Go to Louis's GitHub</span>
       <svg
         viewBox="0 0 16 16"
@@ -27,18 +27,5 @@ const today = new Date();
     background: linear-gradient(var(--gray-gradient)) no-repeat;
     color: rgb(var(--gray));
     text-align: center;
-  }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: rgb(var(--gray));
-  }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
   }
 </style>
