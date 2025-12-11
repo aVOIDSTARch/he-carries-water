@@ -1,0 +1,162 @@
+[
+  {
+    "timestamp": "2024-12-11T10:30:00.000Z",
+    "eventType": "user_login",
+    "title": "User logged in: Admin User",
+    "description": "User successfully authenticated via GitHub",
+    "user": {
+      "id": "12345",
+      "name": "Admin User",
+      "email": "admin@example.com"
+    },
+    "tags": ["authentication", "login"],
+    "severity": "info",
+    "ipAddress": "192.168.1.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+  },
+  {
+    "timestamp": "2024-12-11T10:35:22.000Z",
+    "eventType": "post_created",
+    "title": "New blog post created: Getting Started with Astro",
+    "description": "Blog post \"Getting Started with Astro\" was created",
+    "user": {
+      "id": "12345",
+      "name": "Admin User",
+      "email": "admin@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "getting-started-with-astro",
+      "title": "Getting Started with Astro",
+      "url": "/blog/getting-started-with-astro"
+    },
+    "tags": ["blog", "content", "create"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2024-12-11T11:15:45.000Z",
+    "eventType": "mind_idea_created",
+    "title": "New mind idea created: Building a Content Management System",
+    "description": "Mind idea \"Building a Content Management System\" was created",
+    "user": {
+      "id": "12345",
+      "name": "Admin User",
+      "email": "admin@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "building-cms",
+      "title": "Building a Content Management System",
+      "url": "/mind/building-cms"
+    },
+    "tags": ["mind", "content", "create"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2024-12-11T11:20:10.000Z",
+    "eventType": "mind_thought_added",
+    "title": "New thought added to: Building a Content Management System",
+    "description": "A new thought was added to mind idea \"Building a Content Management System\"",
+    "user": {
+      "id": "12345",
+      "name": "Admin User",
+      "email": "admin@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "building-cms",
+      "title": "Building a Content Management System",
+      "url": "/mind/building-cms"
+    },
+    "metadata": {
+      "thoughtId": "thought-001"
+    },
+    "tags": ["mind", "thought", "create"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2024-12-11T14:22:33.000Z",
+    "eventType": "post_updated",
+    "title": "Blog post updated: Getting Started with Astro",
+    "description": "Blog post \"Getting Started with Astro\" was modified",
+    "user": {
+      "id": "12345",
+      "name": "Admin User",
+      "email": "admin@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "getting-started-with-astro",
+      "title": "Getting Started with Astro",
+      "url": "/blog/getting-started-with-astro"
+    },
+    "changes": {
+      "summary": "Updated title and added new section on components",
+      "before": {
+        "title": "Getting Started with Astro"
+      },
+      "after": {
+        "title": "Getting Started with Astro: A Complete Guide"
+      }
+    },
+    "tags": ["blog", "content", "update"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2024-12-11T15:45:12.000Z",
+    "eventType": "comment_added",
+    "title": "New comment on: Getting Started with Astro: A Complete Guide",
+    "description": "A comment was added to \"Getting Started with Astro: A Complete Guide\"",
+    "user": {
+      "name": "Jane Doe",
+      "email": "jane@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "getting-started-with-astro",
+      "title": "Getting Started with Astro: A Complete Guide",
+      "url": "/blog/getting-started-with-astro"
+    },
+    "metadata": {
+      "commentId": "giscus-comment-123"
+    },
+    "tags": ["comment", "engagement", "create"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2024-12-11T16:30:00.000Z",
+    "eventType": "media_uploaded",
+    "title": "Media file uploaded: hero-image.jpg",
+    "description": "Image file uploaded to media library",
+    "user": {
+      "id": "12345",
+      "name": "Admin User",
+      "email": "admin@example.com"
+    },
+    "relatedContent": {
+      "type": "media",
+      "id": "hero-image-001",
+      "title": "hero-image.jpg"
+    },
+    "metadata": {
+      "fileSize": 245678,
+      "mimeType": "image/jpeg",
+      "dimensions": "1920x1080"
+    },
+    "tags": ["media", "upload", "image"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2024-12-11T17:00:00.000Z",
+    "eventType": "user_logout",
+    "title": "User logged out: Admin User",
+    "description": "User signed out",
+    "user": {
+      "id": "12345",
+      "name": "Admin User",
+      "email": "admin@example.com"
+    },
+    "tags": ["authentication", "logout"],
+    "severity": "info"
+  }
+]

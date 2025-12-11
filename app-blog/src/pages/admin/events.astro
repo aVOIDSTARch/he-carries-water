@@ -1,0 +1,333 @@
+---
+import { getSession } from 'auth-astro/server';
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getCollection } from 'astro:content';
+import type { SeverityLevel } from '../../lib/audit-logger';
+
+const session = await getSession(Astro.request);
+
+// Redirect to login if not authenticated
+if (!session) {
+	return Astro.redirect('/admin/login');
+}
+
+// Get user info
+const user = session.user;
+
+// Fetch all events
+let allEvents: any[] = [];
+try {
+	const eventFiles = await getCollection('events');
+
+	// Flatten all events from all files and sort by timestamp
+	allEvents = eventFiles.flatMap(file => {
+		const events = file.data as any;
+		if (Array.isArray(events)) {
+			return events;
+		}
+		return [events];
+	}).sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+} catch (error) {
+	console.error('Error fetching events:', error);
+	allEvents = [];
+}
+
+// Get filter from query params
+const url = new URL(Astro.request.url);
+const filterType = url.searchParams.get('type');
+const filterSeverity = url.searchParams.get('severity');
+
+// Apply filters
+let filteredEvents = allEvents;
+if (filterType) {
+	filteredEvents = filteredEvents.filter(e => e.eventType === filterType);
+}
+if (filterSeverity) {
+	filteredEvents = filteredEvents.filter(e => e.severity === filterSeverity);
+}
+
+// Get unique event types and severities for filters
+const eventTypes = [...new Set(allEvents.map(e => e.eventType))].sort();
+const severities: SeverityLevel[] = ['info', 'warning', 'error', 'critical'];
+
+// Pagination
+const page = parseInt(url.searchParams.get('page') || '1');
+const perPage = 25;
+const totalPages = Math.ceil(filteredEvents.length / perPage);
+const paginatedEvents = filteredEvents.slice((page - 1) * perPage, page * perPage);
+
+// Helper function to get severity color
+const getSeverityColor = (severity: SeverityLevel = 'info') => {
+	switch (severity) {
+		case 'critical':
+			return 'bg-red-600';
+		case 'error':
+			return 'bg-orange-500';
+		case 'warning':
+			return 'bg-yellow-500';
+		case 'info':
+		default:
+			return 'bg-blue-500';
+	}
+};
+
+// Helper function to format date
+const formatDate = (timestamp: string) => {
+	const date = new Date(timestamp);
+	return date.toLocaleString('en-US', {
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+	});
+};
+---
+
+<AdminLayout title="Activity Log">
+	<div class="space-y-6">
+		<!-- Header -->
+		<div class="border-2 border-black bg-accent/10 p-6 shadow-custom">
+			<h1 class="text-3xl font-mono uppercase font-bold mb-2">
+				Activity Log
+			</h1>
+			<p class="font-mono text-gray-dark">
+				Complete audit trail of all website events
+			</p>
+		</div>
+
+		<!-- Filters -->
+		<div class="border-2 border-black bg-white p-4 shadow-custom">
+			<form method="get" class="flex flex-wrap gap-4 items-end">
+				<div class="flex-1 min-w-[200px]">
+					<label class="block text-xs font-mono uppercase font-bold mb-2">
+						Event Type
+					</label>
+					<select
+						name="type"
+						class="w-full px-3 py-2 border-2 border-black font-mono text-sm"
+					>
+						<option value="">All Types</option>
+						{eventTypes.map(type => (
+							<option value={type} selected={filterType === type}>
+								{type.replace(/_/g, ' ')}
+							</option>
+						))}
+					</select>
+				</div>
+
+				<div class="flex-1 min-w-[200px]">
+					<label class="block text-xs font-mono uppercase font-bold mb-2">
+						Severity
+					</label>
+					<select
+						name="severity"
+						class="w-full px-3 py-2 border-2 border-black font-mono text-sm"
+					>
+						<option value="">All Severities</option>
+						{severities.map(severity => (
+							<option value={severity} selected={filterSeverity === severity}>
+								{severity}
+							</option>
+						))}
+					</select>
+				</div>
+
+				<div class="flex gap-2">
+					<button
+						type="submit"
+						class="px-4 py-2 border-2 border-black bg-accent text-white font-mono uppercase font-bold hover:bg-accent-dark transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+					>
+						Filter
+					</button>
+					<a
+						href="/admin/events"
+						class="px-4 py-2 border-2 border-black bg-white font-mono uppercase font-bold hover:bg-gray-100 transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+					>
+						Clear
+					</a>
+				</div>
+			</form>
+		</div>
+
+		<!-- Stats -->
+		<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+			<div class="border-2 border-black bg-white p-4 shadow-custom">
+				<div class="text-xs font-mono uppercase text-gray-dark mb-1">Total Events</div>
+				<div class="text-2xl font-mono font-bold">{allEvents.length}</div>
+			</div>
+			<div class="border-2 border-black bg-white p-4 shadow-custom">
+				<div class="text-xs font-mono uppercase text-gray-dark mb-1">Info</div>
+				<div class="text-2xl font-mono font-bold text-blue-600">
+					{allEvents.filter(e => (e.severity || 'info') === 'info').length}
+				</div>
+			</div>
+			<div class="border-2 border-black bg-white p-4 shadow-custom">
+				<div class="text-xs font-mono uppercase text-gray-dark mb-1">Warnings</div>
+				<div class="text-2xl font-mono font-bold text-yellow-600">
+					{allEvents.filter(e => e.severity === 'warning').length}
+				</div>
+			</div>
+			<div class="border-2 border-black bg-white p-4 shadow-custom">
+				<div class="text-xs font-mono uppercase text-gray-dark mb-1">Errors</div>
+				<div class="text-2xl font-mono font-bold text-red-600">
+					{allEvents.filter(e => e.severity === 'error' || e.severity === 'critical').length}
+				</div>
+			</div>
+		</div>
+
+		<!-- Events List -->
+		<div class="border-2 border-black bg-white p-6 shadow-custom">
+			<div class="flex items-center justify-between mb-4 pb-4 border-b-2 border-black">
+				<h2 class="text-xl font-mono uppercase font-bold">
+					Events
+					{filterType || filterSeverity ? `(Filtered)` : ''}
+				</h2>
+				<div class="text-sm font-mono text-gray-dark">
+					Showing {paginatedEvents.length} of {filteredEvents.length}
+				</div>
+			</div>
+
+			{paginatedEvents.length === 0 ? (
+				<p class="font-mono text-gray-dark text-center py-8">
+					No events found
+				</p>
+			) : (
+				<div class="space-y-3">
+					{paginatedEvents.map((event) => (
+						<div class="border-2 border-black bg-white shadow-[2px_2px_0px_0px_black] overflow-hidden flex">
+							<!-- Severity Color Bar -->
+							<div class={`w-2 ${getSeverityColor(event.severity)}`}></div>
+
+							<!-- Event Content -->
+							<div class="flex-1 p-4">
+								<div class="flex items-start justify-between gap-4">
+									<div class="flex-1">
+										<h3 class="font-mono font-bold text-sm mb-1">
+											{event.title}
+										</h3>
+
+										{event.description && (
+											<p class="font-mono text-xs text-gray-dark mb-2">
+												{event.description}
+											</p>
+										)}
+
+										<div class="flex flex-wrap gap-2 items-center">
+											<!-- Event Type Badge -->
+											<span class="inline-block px-2 py-1 bg-gray-100 border border-black text-xs font-mono uppercase">
+												{event.eventType.replace(/_/g, ' ')}
+											</span>
+
+											<!-- User Info -->
+											{event.user?.name && (
+												<span class="text-xs font-mono text-gray-dark">
+													by <span class="font-bold">{event.user.name}</span>
+												</span>
+											)}
+											{event.user?.email && !event.user?.name && (
+												<span class="text-xs font-mono text-gray-dark">
+													by <span class="font-bold">{event.user.email}</span>
+												</span>
+											)}
+
+											<!-- Tags -->
+											{event.tags && event.tags.length > 0 && (
+												<div class="flex gap-1">
+													{event.tags.slice(0, 3).map((tag: string) => (
+														<span class="inline-block px-1.5 py-0.5 bg-accent/10 border border-accent text-xs font-mono">
+															#{tag}
+														</span>
+													))}
+												</div>
+											)}
+										</div>
+									</div>
+
+									<!-- Timestamp & Severity -->
+									<div class="text-right">
+										<time class="text-xs font-mono text-gray-dark whitespace-nowrap block mb-1">
+											{formatDate(event.timestamp)}
+										</time>
+
+										<span class={`inline-block px-2 py-0.5 text-xs font-mono uppercase font-bold border-2 border-black
+											${event.severity === 'critical' ? 'bg-red-600 text-white' : ''}
+											${event.severity === 'error' ? 'bg-orange-500 text-white' : ''}
+											${event.severity === 'warning' ? 'bg-yellow-500 text-black' : ''}
+											${(event.severity === 'info' || !event.severity) ? 'bg-blue-100 text-blue-900' : ''}
+										`}>
+											{event.severity || 'info'}
+										</span>
+									</div>
+								</div>
+
+								<!-- Related Content Link -->
+								{event.relatedContent?.url && (
+									<a
+										href={event.relatedContent.url}
+										class="inline-block mt-2 text-xs font-mono text-accent hover:underline"
+									>
+										View {event.relatedContent.type} →
+									</a>
+								)}
+
+								<!-- IP Address (if available) -->
+								{event.ipAddress && (
+									<div class="mt-2 text-xs font-mono text-gray-dark">
+										IP: {event.ipAddress}
+									</div>
+								)}
+							</div>
+						</div>
+					))}
+				</div>
+			)}
+
+			<!-- Pagination -->
+			{totalPages > 1 && (
+				<div class="mt-6 pt-6 border-t-2 border-black flex justify-center gap-2">
+					{page > 1 && (
+						<a
+							href={`?page=${page - 1}${filterType ? `&type=${filterType}` : ''}${filterSeverity ? `&severity=${filterSeverity}` : ''}`}
+							class="px-4 py-2 border-2 border-black bg-white font-mono font-bold hover:bg-gray-100"
+						>
+							← Prev
+						</a>
+					)}
+
+					<div class="flex items-center gap-2">
+						{Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+							const pageNum = Math.max(1, Math.min(page - 2, totalPages - 4)) + i;
+							if (pageNum > totalPages) return null;
+							return (
+								<a
+									href={`?page=${pageNum}${filterType ? `&type=${filterType}` : ''}${filterSeverity ? `&severity=${filterSeverity}` : ''}`}
+									class={`px-3 py-2 border-2 border-black font-mono font-bold ${
+										pageNum === page ? 'bg-accent text-white' : 'bg-white hover:bg-gray-100'
+									}`}
+								>
+									{pageNum}
+								</a>
+							);
+						})}
+					</div>
+
+					{page < totalPages && (
+						<a
+							href={`?page=${page + 1}${filterType ? `&type=${filterType}` : ''}${filterSeverity ? `&severity=${filterSeverity}` : ''}`}
+							class="px-4 py-2 border-2 border-black bg-white font-mono font-bold hover:bg-gray-100"
+						>
+							Next →
+						</a>
+					)}
+				</div>
+			)}
+		</div>
+	</div>
+</AdminLayout>
+
+<style>
+	.shadow-custom {
+		box-shadow: 4px 4px 0px 0px var(--color-black);
+	}
+</style>
