@@ -1,0 +1,139 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title="Dev Zone - Under Construction" description="Development section coming soon" />
+	</head>
+	<body>
+		<Header />
+		<main class="w-full max-w-[900px] mx-auto p-4 min-h-screen flex items-center justify-center">
+			<div class="w-full">
+				<!-- Main Construction Banner -->
+				<div class="border-4 border-black bg-yellow-300 p-8 mb-8 shadow-[8px_8px_0px_0px_black] animate-pulse">
+					<h1 class="text-6xl md:text-8xl font-mono font-bold uppercase text-center mb-4 text-black">
+						⚠️ CAUTION ⚠️
+					</h1>
+					<p class="text-2xl md:text-3xl font-mono text-center text-black uppercase font-bold">
+						Dev Zone Under Construction
+					</p>
+				</div>
+
+				<!-- ASCII Art Construction Worker -->
+				<div class="border-2 border-black bg-white p-6 mb-8 shadow-custom">
+					<pre class="font-mono text-xs md:text-sm overflow-x-auto text-center">
+{`
+    ___
+   /   \\     
+  | O O |    < "I'm building stuff!"
+   \\___/     
+    |||      
+   /| |\\    
+  / | | \\   
+    | |      
+   _| |_     
+  |_____|    
+`}
+					</pre>
+				</div>
+
+				<!-- Status Messages -->
+				<div class="space-y-4 mb-8">
+					<div class="border-2 border-black bg-accent/20 p-4 shadow-custom">
+						<p class="font-mono text-sm">
+							<span class="text-accent-dark font-bold">&gt;</span> STATUS: Currently debugging reality...
+						</p>
+					</div>
+					
+					<div class="border-2 border-black bg-accent/20 p-4 shadow-custom">
+						<p class="font-mono text-sm">
+							<span class="text-accent-dark font-bold">&gt;</span> PROGRESS: 42% (the answer to everything)
+						</p>
+					</div>
+					
+					<div class="border-2 border-black bg-accent/20 p-4 shadow-custom">
+						<p class="font-mono text-sm">
+							<span class="text-accent-dark font-bold">&gt;</span> ETA: When the code compiles on the first try
+						</p>
+					</div>
+				</div>
+
+				<!-- Fake Terminal Output -->
+				<div class="border-2 border-black bg-black p-6 shadow-custom mb-8">
+					<div class="font-mono text-sm text-green-400">
+						<p class="mb-2">$ npm run build-dev-section</p>
+						<p class="mb-2 text-yellow-400">⚡ Building development portfolio...</p>
+						<p class="mb-2">✓ Compiling eccentric ideas</p>
+						<p class="mb-2">✓ Bundling creative chaos</p>
+						<p class="mb-2">✓ Minifying perfectionism</p>
+						<p class="mb-2 text-red-400">✗ Error: Too many cool projects to choose from</p>
+						<p class="mb-2 text-gray-400">  at selectProjects (brain.js:404)</p>
+						<p class="text-yellow-400 animate-pulse">⏳ Refactoring... please stand by...</p>
+					</div>
+				</div>
+
+				<!-- Coming Soon Features -->
+				<div class="border-2 border-black bg-white p-6 shadow-custom">
+					<h2 class="text-2xl font-mono uppercase font-bold mb-4 border-b-2 border-black pb-2">
+						Coming Soon™
+					</h2>
+					<ul class="space-y-2 font-mono text-sm">
+						<li class="flex items-start">
+							<span class="text-accent-dark mr-2">▸</span>
+							<span>Code projects that actually work (most of the time)</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-accent-dark mr-2">▸</span>
+							<span>Experiments that may or may not have succeeded</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-accent-dark mr-2">▸</span>
+							<span>Technical writings about things I've learned</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-accent-dark mr-2">▸</span>
+							<span>Open source contributions and side quests</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-accent-dark mr-2">▸</span>
+							<span>Proof that I can, in fact, center a div</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Back Button -->
+				<div class="mt-8 text-center">
+					<a 
+						href="/" 
+						class="inline-block px-6 py-3 border-2 border-black bg-white font-mono uppercase font-bold hover:bg-accent hover:text-white transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none"
+					>
+						← Back to Safety
+					</a>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.shadow-custom {
+		box-shadow: 4px 4px 0px 0px var(--color-black);
+	}
+	
+	@keyframes pulse {
+		0%, 100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.7;
+		}
+	}
+	
+	.animate-pulse {
+		animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	}
+</style>
