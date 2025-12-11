@@ -1,0 +1,133 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title="Markdown Guide" description="Quick reference for using markdown in comments" />
+	</head>
+	<body>
+		<Header />
+		<main class="w-full max-w-[800px] mx-auto p-4">
+			<h1 class="text-4xl md:text-5xl font-bold font-mono uppercase mb-8 leading-none border-b-4 border-black pb-4">
+				Markdown Guide
+			</h1>
+
+			<div class="prose max-w-none font-body">
+				<p class="text-lg mb-8">
+					Comments support markdown formatting. Here's a quick reference:
+				</p>
+
+				<!-- Bold & Italic -->
+				<div class="mb-8 border-2 border-black p-6 bg-white shadow-custom">
+					<h2 class="text-2xl font-mono uppercase mb-4">Text Formatting</h2>
+					<div class="grid md:grid-cols-2 gap-4">
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Type this:</p>
+							<code class="block bg-gray-light/30 p-3 border border-gray">**bold text**</code>
+						</div>
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Get this:</p>
+							<div class="bg-white p-3 border-2 border-black"><strong>bold text</strong></div>
+						</div>
+					</div>
+					<div class="grid md:grid-cols-2 gap-4 mt-4">
+						<div>
+							<code class="block bg-gray-light/30 p-3 border border-gray">*italic text*</code>
+						</div>
+						<div>
+							<div class="bg-white p-3 border-2 border-black"><em>italic text</em></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Links -->
+				<div class="mb-8 border-2 border-black p-6 bg-white shadow-custom">
+					<h2 class="text-2xl font-mono uppercase mb-4">Links</h2>
+					<div class="grid md:grid-cols-2 gap-4">
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Type this:</p>
+							<code class="block bg-gray-light/30 p-3 border border-gray text-xs">[link text](https://example.com)</code>
+						</div>
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Get this:</p>
+							<div class="bg-white p-3 border-2 border-black"><a href="https://example.com">link text</a></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Code -->
+				<div class="mb-8 border-2 border-black p-6 bg-white shadow-custom">
+					<h2 class="text-2xl font-mono uppercase mb-4">Code</h2>
+					<div class="grid md:grid-cols-2 gap-4">
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Inline code:</p>
+							<code class="block bg-gray-light/30 p-3 border border-gray">`code here`</code>
+						</div>
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Get this:</p>
+							<div class="bg-white p-3 border-2 border-black"><code>code here</code></div>
+						</div>
+					</div>
+					<div class="mt-4">
+						<p class="font-mono text-sm mb-2 text-gray-dark">Code block (use 3 backticks):</p>
+						<code class="block bg-gray-light/30 p-3 border border-gray text-xs">```<br/>function example() {`{`}<br/>  return "hello";<br/>{`}`}<br/>```</code>
+					</div>
+				</div>
+
+				<!-- Lists -->
+				<div class="mb-8 border-2 border-black p-6 bg-white shadow-custom">
+					<h2 class="text-2xl font-mono uppercase mb-4">Lists</h2>
+					<div class="grid md:grid-cols-2 gap-4">
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Type this:</p>
+							<code class="block bg-gray-light/30 p-3 border border-gray text-sm">- Item one<br/>- Item two<br/>- Item three</code>
+						</div>
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Get this:</p>
+							<div class="bg-white p-3 border-2 border-black">
+								<ul class="list-disc list-inside">
+									<li>Item one</li>
+									<li>Item two</li>
+									<li>Item three</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Quotes -->
+				<div class="mb-8 border-2 border-black p-6 bg-white shadow-custom">
+					<h2 class="text-2xl font-mono uppercase mb-4">Quotes</h2>
+					<div class="grid md:grid-cols-2 gap-4">
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Type this:</p>
+							<code class="block bg-gray-light/30 p-3 border border-gray">&gt; This is a quote</code>
+						</div>
+						<div>
+							<p class="font-mono text-sm mb-2 text-gray-dark">Get this:</p>
+							<div class="bg-white p-3 border-2 border-black">
+								<blockquote class="border-l-4 border-accent pl-4 italic">This is a quote</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="border-2 border-black bg-accent/10 p-6 mt-8">
+					<p class="font-mono text-sm text-gray-dark">
+						<span class="text-accent-dark font-bold">&gt;</span> Tip: You can combine these! Try **bold *and italic* text** or add `code` in lists.
+					</p>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.shadow-custom {
+		box-shadow: 4px 4px 0px 0px var(--color-black);
+	}
+</style>
