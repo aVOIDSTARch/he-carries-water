@@ -8,10 +8,18 @@ import preact from "@astrojs/preact";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import auth from "auth-astro";
+
+import node from "@astrojs/node";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://hecarrieswater.com",
-  integrations: [mdx(), sitemap(), preact({ devtools: true })],
+  output: "server", // Enable SSR for authentication
+  adapter: node({
+    mode: "standalone",
+  }),
+  integrations: [mdx(), sitemap(), preact({ devtools: true }), auth()],
 
   vite: {
     plugins: [tailwindcss()],

@@ -4,28 +4,45 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header
-  class='m-0 px-4 py-2 bg-white/95 backdrop-blur-sm border-b-2 border-black sticky top-0 z-50'
+  class='m-0 px-4 py-6 bg-white/95 backdrop-blur-sm border-b-2 border-black sticky top-0 z-50'
 >
-  <nav class='grid grid-cols-[2fr_auto_1fr] items-center'>
+  <nav class='flex justify-between items-center max-w-[1200px] mx-auto w-full'>
     <h2
-      class='text-[1.5em] font-bold border-none bg-transparent shadow-none p-0 m-0 justify-self-start'
+      class='text-[1.5em] font-bold border-none bg-transparent shadow-none p-0 m-0 whitespace-nowrap'
     >
-      <a href='/' class='no-underline text-black hover:text-accent border-none'
+      <a href='/' class='no-underline text-black hover:bg-accent hover:text-white hover:px-2 transition-all border-none whitespace-nowrap'
         >{SITE_TITLE}</a
       >
     </h2>
-    <div class='internal-links flex gap-4 justify-self-center'>
+    <div class='internal-links flex gap-4 absolute left-1/2 -translate-x-1/2'>
       <HeaderLink href='/'>home</HeaderLink>
       <HeaderLink href='/blog'>blog</HeaderLink>
       <HeaderLink href='/dev'>dev</HeaderLink>
       <HeaderLink href='/mind'>mind</HeaderLink>
       <HeaderLink href='/about'>bio</HeaderLink>
     </div>
-    <div class='social-links flex gap-4 justify-self-end'>
+    <div class='social-links flex gap-4 items-center justify-self-end'>
+      <!-- Hidden admin access - appears when /#admin hash is present -->
+      <a
+        id='admin-ninja'
+        href='/admin'
+        class='hidden opacity-0 hover:opacity-100 transition-opacity p-2 -m-2'
+        title='Admin Access'
+      >
+        <span class='sr-only'>Admin Access</span>
+        <img 
+          src='/ninja-icon-raw.png' 
+          alt='Admin' 
+          width='32' 
+          height='32'
+          class='ninja-icon'
+        />
+      </a>
+      
       <a
         href='https://github.com/avoidstarch'
         target='_blank'
-        class='flex text-black hover:text-accent border-none pr-10'
+        class='flex text-black hover:bg-accent hover:text-white p-2 -m-2 transition-all border-none'
       >
         <span class='sr-only'>Go to Louis's GitHub page</span>
         <svg viewBox='0 0 16 16' aria-hidden='true' width='32' height='32'
@@ -38,3 +55,38 @@ import HeaderLink from "./HeaderLink.astro";
     </div>
   </nav>
 </header>
+
+<script is:inline>
+  // Admin access detection via hash
+  function checkAdminHash() {
+    const adminNinja = document.getElementById('admin-ninja');
+    console.log('Checking admin hash:', window.location.hash, 'Element:', adminNinja);
+    
+    if (window.location.hash === '#admin' && adminNinja) {
+      console.log('Admin hash detected! Showing ninja icon');
+      adminNinja.classList.remove('hidden', 'opacity-0');
+      adminNinja.classList.add('flex', 'opacity-50');
+    }
+  }
+  
+  // Check on load and hash change
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkAdminHash);
+  } else {
+    checkAdminHash();
+  }
+  
+  window.addEventListener('hashchange', checkAdminHash);
+</script>
+
+<style>
+  /* Dark gray filter for ninja icon */
+  .ninja-icon {
+    filter: brightness(0.3) saturate(0);
+    transition: filter 0.3s ease;
+  }
+  
+  #admin-ninja:hover .ninja-icon {
+    filter: brightness(0.5) saturate(0);
+  }
+</style>

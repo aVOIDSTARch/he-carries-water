@@ -1,0 +1,92 @@
+---
+import { getSession } from 'auth-astro/server';
+import AdminLayout from '../../layouts/AdminLayout.astro';
+
+const session = await getSession(Astro.request);
+
+// Redirect to login if not authenticated
+if (!session) {
+	return Astro.redirect('/admin/login');
+}
+
+// Get user info
+const user = session.user;
+---
+
+<AdminLayout title="Admin Dashboard">
+	<div class="space-y-6">
+		<!-- Welcome Header -->
+		<div class="border-2 border-black bg-accent/10 p-6 shadow-custom">
+			<h1 class="text-3xl font-mono uppercase font-bold mb-2">
+				Welcome Back, {user?.name || 'Admin'}!
+			</h1>
+			<p class="font-mono text-gray-dark">
+				Logged in as: <span class="text-accent-dark font-bold">{user?.email || user?.name}</span>
+			</p>
+		</div>
+
+		<!-- Statistics Cards -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+			<div class="border-2 border-black bg-white p-6 shadow-custom">
+				<div class="text-sm font-mono uppercase text-gray-dark mb-2">Blog Posts</div>
+				<div class="text-4xl font-mono font-bold">--</div>
+				<a href="/admin/blog" class="text-sm font-mono text-accent hover:underline mt-2 inline-block">
+					Manage →
+				</a>
+			</div>
+
+			<div class="border-2 border-black bg-white p-6 shadow-custom">
+				<div class="text-sm font-mono uppercase text-gray-dark mb-2">Mind Ideas</div>
+				<div class="text-4xl font-mono font-bold">87</div>
+				<a href="/admin/mind" class="text-sm font-mono text-accent hover:underline mt-2 inline-block">
+					Manage →
+				</a>
+			</div>
+
+			<div class="border-2 border-black bg-white p-6 shadow-custom">
+				<div class="text-sm font-mono uppercase text-gray-dark mb-2">Media Files</div>
+				<div class="text-4xl font-mono font-bold">--</div>
+				<a href="/admin/media" class="text-sm font-mono text-accent hover:underline mt-2 inline-block">
+					Manage →
+				</a>
+			</div>
+		</div>
+
+		<!-- Quick Actions -->
+		<div class="border-2 border-black bg-white p-6 shadow-custom">
+			<h2 class="text-xl font-mono uppercase font-bold mb-4 border-b-2 border-black pb-2">
+				Quick Actions
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<a 
+					href="/admin/blog/new" 
+					class="block px-6 py-4 border-2 border-black bg-accent text-white font-mono uppercase font-bold text-center hover:bg-accent-dark transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+				>
+					+ New Blog Post
+				</a>
+				<a 
+					href="/admin/mind/new" 
+					class="block px-6 py-4 border-2 border-black bg-accent text-white font-mono uppercase font-bold text-center hover:bg-accent-dark transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+				>
+					+ New Mind Idea
+				</a>
+			</div>
+		</div>
+
+		<!-- Recent Activity (Placeholder) -->
+		<div class="border-2 border-black bg-white p-6 shadow-custom">
+			<h2 class="text-xl font-mono uppercase font-bold mb-4 border-b-2 border-black pb-2">
+				Recent Activity
+			</h2>
+			<p class="font-mono text-gray-dark text-center py-8">
+				Activity tracking coming soon...
+			</p>
+		</div>
+	</div>
+</AdminLayout>
+
+<style>
+	.shadow-custom {
+		box-shadow: 4px 4px 0px 0px var(--color-black);
+	}
+</style>

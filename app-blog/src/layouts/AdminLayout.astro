@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'Admin Panel' } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main class="w-full max-w-[1400px] mx-auto p-4 min-h-screen">
+			<div class="flex gap-6">
+				<!-- Sidebar Navigation -->
+				<aside class="w-64 border-2 border-black bg-white p-6 shadow-custom h-fit sticky top-24">
+					<h2 class="text-xl font-mono uppercase font-bold mb-6 border-b-2 border-black pb-2">
+						Admin Panel
+					</h2>
+					<nav class="space-y-2">
+						<a href="/admin" class="block px-3 py-2 border-2 border-black hover:bg-accent hover:text-white transition-all font-mono">
+							Dashboard
+						</a>
+						<a href="/admin/blog" class="block px-3 py-2 border-2 border-black hover:bg-accent hover:text-white transition-all font-mono">
+							Blog Posts
+						</a>
+						<a href="/admin/mind" class="block px-3 py-2 border-2 border-black hover:bg-accent hover:text-white transition-all font-mono">
+							Mind Ideas
+						</a>
+						<a href="/admin/media" class="block px-3 py-2 border-2 border-black hover:bg-accent hover:text-white transition-all font-mono">
+							Media
+						</a>
+					</nav>
+					
+					<div class="mt-8 pt-6 border-t-2 border-black">
+						<form action="/api/auth/signout" method="POST">
+							<button type="submit" class="w-full px-3 py-2 border-2 border-black bg-red-100 hover:bg-red-500 hover:text-white transition-all font-mono uppercase font-bold">
+								Logout
+							</button>
+						</form>
+					</div>
+				</aside>
+
+				<!-- Main Content Area -->
+				<div class="flex-1">
+					<slot />
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.shadow-custom {
+		box-shadow: 4px 4px 0px 0px var(--color-black);
+	}
+</style>
