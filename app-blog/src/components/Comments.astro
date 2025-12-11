@@ -1,0 +1,82 @@
+---
+// Giscus Comments Component
+// Uses GitHub Discussions as backend for comments
+---
+
+<div class="comments-section mt-12 pt-8 border-t-4 border-black">
+	<h2 class="text-2xl font-bold font-mono uppercase mb-6 border-2 border-black p-4 bg-white shadow-custom">
+		> Comments_
+	</h2>
+	<div class="giscus-container border-2 border-black p-6 bg-white shadow-custom">
+		<script 
+			src="https://giscus.app/client.js"
+			data-repo="aVOIDSTARch/he-carries-water"
+			data-repo-id="R_kgDOQk4mmw" 
+			data-category="General"
+			data-category-id="DIC_kwDOLK3sNc4Cfb-T"
+			data-mapping="pathname"
+			data-strict="0"
+			data-reactions-enabled="1"
+			data-emit-metadata="0"
+			data-input-position="top"
+			data-theme="light"
+			data-lang="en"
+			data-loading="lazy"
+			crossorigin="anonymous"
+			async>
+		</script>
+	</div>
+</div>
+
+<style>
+	/* Custom Giscus styling to match brutalist aesthetic */
+	.giscus-container :global(.giscus-frame) {
+		border: none !important;
+	}
+
+	/* Style comment boxes with hard borders and shadows */
+	.giscus-container :global(.gsc-comment-box) {
+		border: 2px solid var(--color-black) !important;
+		box-shadow: 4px 4px 0px 0px var(--color-black) !important;
+		border-radius: 0 !important;
+	}
+
+	/* Style comment textarea */
+	.giscus-container :global(textarea) {
+		border: 2px solid var(--color-black) !important;
+		font-family: var(--font-mono) !important;
+		border-radius: 0 !important;
+	}
+
+	/* Style buttons with accent color */
+	.giscus-container :global(button) {
+		border: 2px solid var(--color-black) !important;
+		border-radius: 0 !important;
+		font-family: var(--font-mono) !important;
+		text-transform: uppercase !important;
+		font-weight: bold !important;
+	}
+
+	.giscus-container :global(button:hover) {
+		background-color: var(--color-accent) !important;
+		color: white !important;
+	}
+
+	/* Style individual comments */
+	.giscus-container :global(.gsc-comment) {
+		border: 2px solid var(--color-black) !important;
+		box-shadow: 4px 4px 0px 0px var(--color-black) !important;
+		border-radius: 0 !important;
+		margin-bottom: 1rem !important;
+	}
+
+	/* Style comment metadata */
+	.giscus-container :global(.gsc-comment-author) {
+		font-family: var(--font-mono) !important;
+	}
+
+	/* Style reactions */
+	.giscus-container :global(.gsc-reactions) {
+		border-top: 2px solid var(--color-gray-light) !important;
+	}
+</style>

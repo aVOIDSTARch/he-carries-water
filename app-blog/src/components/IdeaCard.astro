@@ -1,0 +1,60 @@
+---
+interface Props {
+	title: string;
+	summary: string;
+	slug: string;
+	updatedDate: Date;
+	hashtags: string[];
+	thoughtCount: number;
+}
+
+const { title, summary, slug, updatedDate, hashtags, thoughtCount } = Astro.props;
+---
+
+<a href={`/mind/${slug}`} class="idea-card group block no-underline border-none p-0 m-0">
+	<div class="card-inner border-2 border-black bg-white p-6 shadow-custom transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none">
+		<div class="flex justify-between items-start mb-4">
+			<h3 class="text-2xl font-bold font-mono uppercase m-0 text-black group-hover:text-accent transition-colors">
+				{title}
+			</h3>
+			<span class="text-sm font-mono text-gray bg-gray-light/30 px-2 py-1 border border-gray">
+				{thoughtCount} {thoughtCount === 1 ? 'thought' : 'thoughts'}
+			</span>
+		</div>
+		
+		<p class="font-body text-base text-gray-dark mb-4 leading-relaxed">
+			{summary}
+		</p>
+		
+		<div class="flex flex-wrap gap-2 mb-3">
+			{hashtags.slice(0, 4).map(tag => (
+				<span class="text-xs font-mono px-2 py-1 border border-black bg-gray-light/20 text-black">
+					{tag}
+				</span>
+			))}
+			{hashtags.length > 4 && (
+				<span class="text-xs font-mono px-2 py-1 text-gray">
+					+{hashtags.length - 4} more
+				</span>
+			)}
+		</div>
+		
+		<div class="text-xs font-mono text-gray flex items-center gap-2">
+			<span class="text-accent-dark font-bold">&gt;</span>
+			<span>last_update:</span>
+			<time datetime={updatedDate.toISOString()}>
+				{updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+			</time>
+		</div>
+	</div>
+</a>
+
+<style>
+	.idea-card {
+		display: block;
+	}
+	
+	.shadow-custom {
+		box-shadow: 4px 4px 0px 0px var(--color-black);
+	}
+</style>

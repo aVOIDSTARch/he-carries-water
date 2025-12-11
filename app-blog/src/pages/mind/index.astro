@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import IdeaCard from '../../components/IdeaCard.astro';
+
+// Get all mind entries and sort by updatedDate (newest first)
+const ideas = (await getCollection('mind')).sort(
+	(a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
+);
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title="Mind | He Carries Water" description="Ideas, thoughts, and evolving concepts" />
+	</head>
+	<body>
+		<Header />
+		<main class="w-full max-w-[960px] mx-auto p-4">
+			<div class="mb-12 border-b-4 border-black pb-8">
+				<h1 class="text-4xl md:text-5xl font-bold font-mono uppercase mb-4 leading-none">
+					> Mind_
+				</h1>
+				<p class="font-body text-lg text-gray-dark leading-relaxed max-w-[720px]">
+					A living collection of ideas, thoughts, and evolving concepts. Each project is a journey of exploration, documented chronologically as thoughts emerge and develop.
+				</p>
+			</div>
+
+			{ideas.length === 0 ? (
+				<div class="border-2 border-black bg-gray-light/20 p-8 text-center">
+					<p class="font-mono text-gray-dark">
+						> no_ideas_yet... <span class="text-accent">_</span>
+					</p>
+				</div>
+			) : (
+				<div class="grid grid-cols-1 gap-6">
+					{ideas.map((idea) => (
+						<IdeaCard
+							title={idea.data.title}
+							summary={idea.data.summary}
+							slug={idea.id}
+							updatedDate={idea.data.updatedDate}
+							hashtags={idea.data.hashtags}
+							thoughtCount={idea.data.thoughts.length}
+						/>
+					))}
+				</div>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>

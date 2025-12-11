@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+// Get all mind entries
+const ideas = await getCollection('mind');
+
+// Collect all unique hashtags and count occurrences
+const tagCounts = new Map<string, number>();
+
+ideas.forEach(idea => {
+	// Count hashtags from idea level
+	idea.data.hashtags.forEach(tag => {
+		const cleanTag = tag.replace('#', '');
+		tagCounts.set(cleanTag, (tagCounts.get(cleanTag) || 0) + 1);
+	});
+	
+	// Count hashtags from thoughts
+	idea.data.thoughts.forEach(thought => {
+		thought.hashtags?.forEach(tag => {
+			const cleanTag = tag.replace('#', '');
+			tagCounts.set(cleanTag, (tagCounts.get(cleanTag) || 0) + 1);
+		});
+	});
+});
+
+// Sort tags alphabetically
+const sortedTags = Array.from(tagCounts.entries()).sort((a, b) => 
+	a[0].localeCompare(b[0])
+);
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title="Tags | Mind" description="Explore ideas by hashtag" />
+	</head>
+	<body>
+		<Header />
+		<main class="w-full max-w-[960px] mx-auto p-4">
+			<div class="mb-12 border-b-4 border-black pb-8">
+				<h1 class="text-4xl md:text-5xl font-bold font-mono uppercase mb-4 leading-none">
+					> Tags_
+				</h1>
+				<p class="font-body text-lg text-gray-dark leading-relaxed max-w-[720px]">
+					All hashtags across the mind collection, sorted alphabetically. Click any tag to see related ideas.
+				</p>
+			</div>
+
+			<!-- Search Filter -->
+			<div class="mb-8">
+				<input
+					type="text"
+					id="tagSearch"
+					placeholder="Filter tags..."
+					class="w-full md:w-96 px-4 py-3 border-2 border-black font-mono text-base shadow-custom focus:outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-none transition-all"
+				/>
+			</div>
+
+			{sortedTags.length === 0 ? (
+				<div class="border-2 border-black bg-gray-light/20 p-8 text-center">
+					<p class="font-mono text-gray-dark">
+						> no_tags_yet... <span class="text-accent">_</span>
+					</p>
+				</div>
+			) : (
+				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+					{sortedTags.map(([tag, count]) => (
+						<a 
+							href={`/mind/tags/${tag}`}
+							class="tag-card group block border-2 border-black bg-white p-4 shadow-custom hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all no-underline"
+						>
+							<div class="flex flex-col gap-2">
+								<span class="text-lg font-mono font-bold text-black group-hover:text-accent transition-colors">
+									#{tag}
+								</span>
+								<span class="text-sm font-mono text-gray">
+									{count} {count === 1 ? 'idea' : 'ideas'}
+								</span>
+							</div>
+						</a>
+					))}
+				</div>
+			)}
+		</main>
+		<Footer />
+
+		<script>
+			// Tag search filter
+			const searchInput = document.getElementById('tagSearch') as HTMLInputElement;
+			const tagCards = document.querySelectorAll('.tag-card');
+
+			searchInput?.addEventListener('input', (e) => {
+				const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+				
+				tagCards.forEach(card => {
+					const tagText = card.querySelector('span')?.textContent?.toLowerCase() || '';
+					const shouldShow = tagText.includes(searchTerm);
+					
+					if (shouldShow) {
+						(card as HTMLElement).style.display = 'block';
+					} else {
+						(card as HTMLElement).style.display = 'none';
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
+
+<style>
+	.shadow-custom {
+		box-shadow: 4px 4px 0px 0px var(--color-black);
+	}
+</style>

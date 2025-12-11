@@ -1,0 +1,58 @@
+{
+  "title": "Eccentric Design Philosophy",
+  "summary": "Exploring the intersection of brutalism, minimalism, and expressive creativity in digital design",
+  "createdDate": "2025-12-11T10:00:00Z",
+  "updatedDate": "2025-12-11T15:30:00Z",
+  "hashtags": ["#design", "#brutalism", "#philosophy", "#minimalism"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-001",
+      "date": "2025-12-11T10:00:00Z",
+      "content": "# Initial Conception\n\nThe idea that design can be both minimal and expressive isn't contradictory. Brutalism teaches us that constraints breed creativity. Hard edges, bold shadows, monospace fonts - these aren't limitations, they're a language.\n\nWhat if we embraced the 'eccentric' not as chaos, but as intentional deviation from the expected?",
+      "hashtags": ["#brutalism", "#constraints"]
+    },
+    {
+      "id": "thought-002",
+      "date": "2025-12-11T14:30:00Z",
+      "content": "# The Role of Shadows\n\nHard shadows (4px offset, no blur) create a sense of **depth without softness**. They're honest about their artificiality. Unlike gradient shadows that try to mimic reality, hard shadows say: \"I am a digital artifact, and that's okay.\"\n\nThis honesty is what makes brutalist design feel more authentic than skeuomorphism ever did.",
+      "hashtags": ["#shadows", "#authenticity"]
+    },
+    {
+      "id": "thought-003",
+      "date": "2025-12-11T15:30:00Z",
+      "content": "# Typography as Voice\n\nSwitching from Atkinson to DM Sans wasn't just about aesthetics - it was about finding a voice that's both **demonstrative** and **professional**. \n\nDM Sans has personality in its letterforms (especially 'a', 'g', 'y') without screaming for attention. It's confident, not loud.\n\nPaired with Space Mono for code/headings, we get a technical-humanist balance.",
+      "hashtags": ["#typography", "#voice"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T10:00:00Z",
+      "action": "created",
+      "description": "Initial idea conception"
+    },
+    {
+      "date": "2025-12-11T10:00:00Z",
+      "action": "thought_added",
+      "description": "Added initial thoughts on brutalism and constraints",
+      "thoughtId": "thought-001"
+    },
+    {
+      "date": "2025-12-11T14:30:00Z",
+      "action": "thought_added",
+      "description": "Explored the role of hard shadows in design",
+      "thoughtId": "thought-002"
+    },
+    {
+      "date": "2025-12-11T14:30:00Z",
+      "action": "tagged",
+      "description": "Added #shadows and #authenticity tags"
+    },
+    {
+      "date": "2025-12-11T15:30:00Z",
+      "action": "thought_added",
+      "description": "Reflected on typography choices and voice",
+      "thoughtId": "thought-003"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import IdeaCard from '../../../components/IdeaCard.astro';
+
+export const getStaticPaths = (async () => {
+	const ideas = await getCollection('mind');
+	
+	// Collect all unique tags
+	const allTags = new Set<string>();
+	
+	ideas.forEach(idea => {
+		idea.data.hashtags.forEach(tag => {
+			allTags.add(tag.replace('#', ''));
+		});
+		idea.data.thoughts.forEach(thought => {
+			thought.hashtags?.forEach(tag => {
+				allTags.add(tag.replace('#', ''));
+			});
+		});
+	});
+	
+	// Create a path for each tag
+	return Array.from(allTags).map(tag => ({
+		params: { tag },
+		props: { tag },
+	}));
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.props;
+
+// Get all ideas that have this tag
+const allIdeas = await getCollection('mind');
+const filteredIdeas = allIdeas.filter(idea => {
+	// Check idea-level hashtags
+	const hasIdeaTag = idea.data.hashtags.some(t => t.replace('#', '') === tag);
+	
+	// Check thought-level hashtags
+	const hasThoughtTag = idea.data.thoughts.some(thought => 
+		thought.hashtags?.some(t => t.replace('#', '') === tag)
+	);
+	
+	return hasIdeaTag || hasThoughtTag;
+}).sort((a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf());
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={`#${tag} | Mind`} description={`Ideas tagged with #${tag}`} />
+	</head>
+	<body>
+		<Header />
+		<main class="w-full max-w-[960px] mx-auto p-4">
+			<div class="mb-12 border-b-4 border-black pb-8">
+				<div class="flex items-center gap-4 mb-4">
+					<a 
+						href="/mind/tags" 
+						class="text-sm font-mono px-3 py-2 border-2 border-black bg-white hover:bg-gray-light transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none no-underline"
+					>
+						← All Tags
+					</a>
+				</div>
+				
+				<h1 class="text-4xl md:text-5xl font-bold font-mono uppercase mb-4 leading-none">
+					#{tag}
+				</h1>
+				<p class="font-body text-lg text-gray-dark leading-relaxed">
+					{filteredIdeas.length} {filteredIdeas.length === 1 ? 'idea' : 'ideas'} tagged with <span class="font-mono text-accent">#{tag}</span>
+				</p>
+			</div>
+
+			{filteredIdeas.length === 0 ? (
+				<div class="border-2 border-black bg-gray-light/20 p-8 text-center">
+					<p class="font-mono text-gray-dark">
+						> no_ideas_with_this_tag... <span class="text-accent">_</span>
+					</p>
+				</div>
+			) : (
+				<div class="grid grid-cols-1 gap-6">
+					{filteredIdeas.map((idea) => (
+						<IdeaCard
+							title={idea.data.title}
+							summary={idea.data.summary}
+							slug={idea.id}
+							updatedDate={idea.data.updatedDate}
+							hashtags={idea.data.hashtags}
+							thoughtCount={idea.data.thoughts.length}
+						/>
+					))}
+				</div>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
