@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# folders
+notion-markdown-clean/
+Notion-Export-12-10-25/

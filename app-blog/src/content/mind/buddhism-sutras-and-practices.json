@@ -1,0 +1,29 @@
+{
+  "title": "Sutras and Practices",
+  "summary": "Buddhist practice notes and teachings - bodhisattva-readings",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#bodhisattva-readings"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Sutras and Practices\n\n[The Sutra of the Three Heaps](https://thubtenchodron.org/2011/06/visualization-thirty-five-buddhas/)\n",
+      "hashtags": ["#buddhism", "#bodhisattva-readings"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

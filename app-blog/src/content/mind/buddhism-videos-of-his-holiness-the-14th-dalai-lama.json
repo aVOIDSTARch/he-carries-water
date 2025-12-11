@@ -1,0 +1,29 @@
+{
+  "title": "Videos of His Holiness the 14th Dalai Lama",
+  "summary": "Buddhist practice notes and teachings - buddhism-books-intro-to-buddhism---dalai-lama",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books-intro-to-buddhism---dalai-lama"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Videos of His Holiness the 14th Dalai Lama\n\n[USIP Peacemakers Dialogues](Videos%20of%20His%20Holiness%20the%2014th%20Dalai%20Lama/USIP%20Peacemakers%20Dialogues%204a3d1b4185f942188c067fb6495863ce.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books-intro-to-buddhism---dalai-lama"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

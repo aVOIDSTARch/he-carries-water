@@ -1,0 +1,29 @@
+{
+  "title": "Buddhism Books",
+  "summary": "Buddhist practice notes and teachings - notion-markdown-clean-buddhism",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notion-markdown-clean-buddhism"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Buddhism Books\n\n[Intro to Buddhism - Dalai Lama](Buddhism%20Books/Intro%20to%20Buddhism%20-%20Dalai%20Lama%20125daae3baf34eda9a28180bc0c904b1.md)\n\n[Guide to Bodhisattva’s Way of Life](Buddhism%20Books/Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life%205697ccc3d3a44a47b115408ae66335ce.md)\n\n[Lama Tsomo’s Courses](Buddhism%20Books/Lama%20Tsomo%E2%80%99s%20Courses%209ad96586d8f9471c97874065119ba287.md)\n\n[The Ten Non-Virtues from Buddhist Philosophy ](Buddhism%20Books/The%20Ten%20Non-Virtues%20from%20Buddhist%20Philosophy%209d926eaed6e54d17b950f9a5905c7a3d.md)\n\n[Being Peace](Buddhism%20Books/Being%20Peace%20b7889b52da5f466ab051633fd4477f37.md)\n\n[Old Path White Clouds - TNH](Buddhism%20Books/Old%20Path%20White%20Clouds%20-%20TNH%20937fae43b2894144a6a8003c76c1314b.md)\n\n[You are here](Buddhism%20Books/You%20are%20here%20a594e418ba1e455bab7a65fb30540969.md)\n\n[Wise Heart](Buddhism%20Books/Wise%20Heart%20c59da43eef4247f18eb3ef1e0b59925c.md)\n\n[Zen Mind Beginner’s Mind](Buddhism%20Books/Zen%20Mind%20Beginner%E2%80%99s%20Mind%2086764fd5f1b44586a7be3b19e71b1761.md)\n",
+      "hashtags": ["#buddhism", "#notion-markdown-clean-buddhism"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

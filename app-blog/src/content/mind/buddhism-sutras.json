@@ -1,0 +1,29 @@
+{
+  "title": "Sutras",
+  "summary": "Buddhist practice notes and teachings - notion-markdown-clean-buddhism",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notion-markdown-clean-buddhism"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Sutras\n\n[Heart Sutra](Sutras/Heart%20Sutra%2068be1786503d47f8a4aed1d483b70286.md)\n\n[Lotus Sutra](Sutras/Lotus%20Sutra%20fb77b8f60083491b8026755bb7381a09.md)\n\n[Mahayana Sutra](Sutras/Mahayana%20Sutra%20a33b6140648a4545b8d9d6ddafd4e706.md)\n",
+      "hashtags": ["#buddhism", "#notion-markdown-clean-buddhism"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

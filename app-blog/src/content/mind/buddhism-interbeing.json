@@ -1,0 +1,29 @@
+{
+  "title": "Interbeing",
+  "summary": "Buddhist practice notes and teachings - buddhism-books-being-peace",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books-being-peace"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Interbeing\n\nEvery culture or community must and will develop its own line of Buddhas and bodhisattvas that light the path to enlightenment. This will look different in each context because the practicers themselves are different.\n\n*******\n\nTiep is a Vietnamese word of Chinese origin which means “to be in touch.” We must be in touch with both ourselves and the Buddhas and bodhisattvas that have come before us in order to become enlightened and lead others to the path.\n\n*******\n\nHien means to manifest and it also means in the present time. Tiep Hien is translate as “interbeing.” \n\nThe Order of Interbeing is made up of the Core and Extended communities and there are Ten Precepts that should be followed.\n\n*******\n\n*******\n",
+      "hashtags": ["#buddhism", "#buddhism-books-being-peace"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

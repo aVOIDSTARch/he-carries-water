@@ -1,0 +1,29 @@
+{
+  "title": "Notes without a Category Yet",
+  "summary": "Buddhist practice notes and teachings - notes-and-contemplations",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notes-and-contemplations"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Notes without a Category Yet\n\n- ***Sangha*** (संघ) is a [Sanskrit](https://en.m.wikipedia.org/wiki/Sanskrit)[[3]](https://en.m.wikipedia.org/wiki/Sangha#cite_note-3)[[4]](https://en.m.wikipedia.org/wiki/Sangha#cite_note-4)[[5]](https://en.m.wikipedia.org/wiki/Sangha#cite_note-5) word used in many Indian languages, including [Pali](https://en.m.wikipedia.org/wiki/Pali) (सङ्घ, saṃgha/saṅgha)[[6]](https://en.m.wikipedia.org/wiki/Sangha#cite_note-6) meaning \"association\", \"assembly\", \"company\" or \"community\"\n- *The three gems*\n\n> *I take refuge in the Buddha. I take refuge in the dharma. I take refuge in the sangha*\n>\n",
+      "hashtags": ["#buddhism", "#notes-and-contemplations"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

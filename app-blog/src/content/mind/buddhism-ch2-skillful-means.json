@@ -1,0 +1,29 @@
+{
+  "title": "Ch2 Skillful Means",
+  "summary": "Buddhist practice notes and teachings - sutras-lotus-sutra",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#sutras-lotus-sutra"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Ch2 Skillful Means\n\nupāya - Skillful means\n\n> The Buddha Bhagavat appear in this world to cause sentient beings to aspire toward purity and the wisdom and insight of the buddhas. They appear in this world to manifest the wisdom and insight of the buddhas to sentient beings. They appear in this world to cause sentient beings to attain the wisdom and insight of a buddha’s enlightenment. They appear in this world in order to cause sentient beings to enter the path of the wisdom and insight of a buddha.\n> \n\nAll beings are capable of reaching parinirvana and will eventually because having heard the dharma it is inevitable. Some through attachment to samsara will take longer but this path was made and is traveled by all. The dharma is by its very nature the infallible light that shows the path.\n",
+      "hashtags": ["#buddhism", "#sutras-lotus-sutra"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

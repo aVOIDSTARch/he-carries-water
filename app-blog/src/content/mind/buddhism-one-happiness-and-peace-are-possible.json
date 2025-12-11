@@ -1,0 +1,29 @@
+{
+  "title": "One Happiness and Peace are Possible",
+  "summary": "Buddhist practice notes and teachings - buddhism-books-you-are-here",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books-you-are-here"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# One Happiness and Peace are Possible\n\nA gardener has the skill to transform garbage into compost and that compost into a flower \n\n## The First Miracle of Mindfulness\n\n### Presence\n\n“A fundamental condition for love is your own presence.”\n\nOne can only live in the present.\n",
+      "hashtags": ["#buddhism", "#buddhism-books-you-are-here"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

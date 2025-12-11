@@ -1,0 +1,29 @@
+{
+  "title": "Difficult Times",
+  "summary": "Buddhist practice notes and teachings - meditation-mediation-videos",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#meditation-mediation-videos"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Difficult Times\n\n[Dealing with strong Emotions. Fear, Anger, Worry - Planting Seeds of Mindfulness Movie](https://youtu.be/6lOnsQOgTPY)\n",
+      "hashtags": ["#buddhism", "#meditation-mediation-videos"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

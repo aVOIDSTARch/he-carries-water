@@ -1,0 +1,29 @@
+{
+  "title": "Seeing the Nobility",
+  "summary": "Buddhist practice notes and teachings - buddhism-books-wise-heart",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books-wise-heart"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Seeing the Nobility\n\n# This is a list of the noble traits I see in others\n\n[Helene](Seeing%20the%20Nobility/Helene%20a1de2d7871324c9eb9664ab04a5ffad4.md)\n\n[Jessica Prince](Seeing%20the%20Nobility/Jessica%20Prince%20f21c254f81324ef585915cd7c8f5637b.md)\n\n[Gwen](Seeing%20the%20Nobility/Gwen%2064e3f186d7d1418eb7ce291e5967fe7e.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books-wise-heart"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Doam Duc - Cutting Off",
+  "summary": "Buddhist practice notes and teachings - notes-and-contemplations-thich-naht-hanh-three-virtues",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notes-and-contemplations-thich-naht-hanh-three-virtues"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Doam Duc - Cutting Off\n\n[Freedom/Letting Go]\n\nEquanimity is related \n\nLetting Go Of:\n\n- Things\n- Views\n- Habits\n\nChanh báo - inherited essence/nature\n\nY báo - environment/nurture \n\nFour nutrients/input\n\n1. Edible foods \n2. Sense impression \n3. Volition \n4. Consciousness \n\noutputs \n\n1. Action\n2. Speech \n3. Thought\n",
+      "hashtags": ["#buddhism", "#notes-and-contemplations-thich-naht-hanh-three-virtues"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

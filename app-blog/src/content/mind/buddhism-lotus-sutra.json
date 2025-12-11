@@ -1,0 +1,29 @@
+{
+  "title": "Lotus Sutra",
+  "summary": "Buddhist practice notes and teachings - sutras",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#sutras"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Lotus Sutra\n\n[Ch1 Introduction](Lotus%20Sutra/Ch1%20Introduction%206fdfb952dd1e4add81ad934592d48dfe.md)\n\n[Ch2 Skillful Means](Lotus%20Sutra/Ch2%20Skillful%20Means%2025cdb6f9b5244b4a904fa9f0206dba26.md)\n\n[Ch3 A Parable](Lotus%20Sutra/Ch3%20A%20Parable%201b3bc85cbf764c8281e09a2ef34f3961.md)\n",
+      "hashtags": ["#buddhism", "#sutras"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

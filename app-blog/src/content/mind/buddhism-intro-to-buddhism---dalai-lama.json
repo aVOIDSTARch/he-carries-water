@@ -1,0 +1,29 @@
+{
+  "title": "Intro to Buddhism - Dalai Lama",
+  "summary": "Buddhist practice notes and teachings - buddhism-books",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Intro to Buddhism - Dalai Lama\n\n[I. Principles of Buddhism](Intro%20to%20Buddhism%20-%20Dalai%20Lama/I%20Principles%20of%20Buddhism%20da6ed3ac604648189cc2ad05ecd665c8.md)\n\n[II. Teaching of the Eight Verses for Teaching the Mind ](Intro%20to%20Buddhism%20-%20Dalai%20Lama/II%20Teaching%20of%20the%20Eight%20Verses%20for%20Teaching%20the%20M%20b12d098c90d74b50859edfd8153cf54a.md)\n\n[Videos of His Holiness the 14th Dalai Lama](Intro%20to%20Buddhism%20-%20Dalai%20Lama/Videos%20of%20His%20Holiness%20the%2014th%20Dalai%20Lama%20f9661e85d3a4442c935852b63191ff89.md)\n\n[The Eight Verses on Training the Mind](Intro%20to%20Buddhism%20-%20Dalai%20Lama/The%20Eight%20Verses%20on%20Training%20the%20Mind%20ad422a959aeb4f89b734b0c36c71df47.md)\n\n[III. Atisha’s Lamp for the Path to Enlightenment ](Intro%20to%20Buddhism%20-%20Dalai%20Lama/III%20Atisha%E2%80%99s%20Lamp%20for%20the%20Path%20to%20Enlightenment%2044b87d9586894b92b8b02f740949a0ff.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Wise Heart",
+  "summary": "Buddhist practice notes and teachings - buddhism-books",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Wise Heart\n\n[Quotes to Think About ](Wise%20Heart/Quotes%20to%20Think%20About%20644723a96f784c468d332e939fc8bd04.md)\n\n[Seeing the Nobility](Wise%20Heart/Seeing%20the%20Nobility%2036181b736d424379bf94d674d9703b6f.md)\n\n[Notes](Wise%20Heart/Notes%20db8d28fff4f0424d88aa655a7d22e8a5.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

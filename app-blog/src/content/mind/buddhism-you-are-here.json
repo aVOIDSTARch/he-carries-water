@@ -1,0 +1,29 @@
+{
+  "title": "You are here",
+  "summary": "Buddhist practice notes and teachings - buddhism-books",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# You are here\n\n## By Thich Nhat Hanh\n\n[One Happiness and Peace are Possible ](You%20are%20here/One%20Happiness%20and%20Peace%20are%20Possible%2009d50a7299ef4ff3ba1a15a1e0ba1c34.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

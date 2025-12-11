@@ -1,0 +1,29 @@
+{
+  "title": "Mediation Videos",
+  "summary": "Buddhist practice notes and teachings - meditation",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#meditation"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Mediation Videos\n\n[Breathing](Mediation%20Videos/Breathing%20921366a9679842c99ad16814e8fa1394.md)\n\n[Sitting](Mediation%20Videos/Sitting%203ed9e88f343a4f55b424001db5f95fe7.md)\n\n[Walking](Mediation%20Videos/Walking%20836be5bc327c48db9668cc44d5039ec6.md)\n\n[Tea](Mediation%20Videos/Tea%20fef73f825934408bb4ed6cd5483bf464.md)\n\n[Difficult Times](Mediation%20Videos/Difficult%20Times%20d137cbbab79246988a4f7be3d0d780b6.md)\n",
+      "hashtags": ["#buddhism", "#meditation"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Guide to Bodhisattva’s Way of Life",
+  "summary": "Buddhist practice notes and teachings - buddhism-books",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Guide to Bodhisattva’s Way of Life\n\n[Introduction](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Introduction%2031362e6bb28b4d569f25dddd3ba89c12.md)\n\n[Chapter 1](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%201%20fffbd992ac934121907d4fe79af080a6.md)\n\n[Chapter 2](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%202%20e87afdd33da74d7db0c458e0ce3879f3.md)\n\n[Chapter 3](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%203%2076251d0701c542aba9e82e41f69015c4.md)\n\n[Chapter 4](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%204%20048963358ea74cceaacba67b55421a65.md)\n\n[Chapter 5](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%205%20eb19d78262df4624aaa6d8d4ae622b23.md)\n\n[Chapter 6](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%206%2073c6c2c3d3a645f4b8900a772a357fe4.md)\n\n[Chapter 7](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%207%20f9a67befbe324de49321c67e7bdda57e.md)\n\n[Chapter 8](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%208%20fdf4f5c11a6a46d38356ab5694d34215.md)\n\n[Chapter 9](Guide%20to%20Bodhisattva%E2%80%99s%20Way%20of%20Life/Chapter%209%20a5ab65e64fb141258db573da28bdf881.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

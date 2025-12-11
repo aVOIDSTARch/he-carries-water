@@ -1,0 +1,29 @@
+{
+  "title": "Thich Naht Hanh",
+  "summary": "Buddhist practice notes and teachings - notes-and-contemplations",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notes-and-contemplations"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Thich Naht Hanh\n\n[Three Virtues](Thich%20Naht%20Hanh/Three%20Virtues%200b4a4c6b4dfa4330b0148023ca35e408.md)\n\n[Three Failings](Thich%20Naht%20Hanh/Three%20Failings%207f1857b544004ac9af84d11f223f6127.md)\n",
+      "hashtags": ["#buddhism", "#notes-and-contemplations"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

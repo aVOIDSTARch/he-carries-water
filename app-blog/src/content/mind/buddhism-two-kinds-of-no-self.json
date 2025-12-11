@@ -1,0 +1,29 @@
+{
+  "title": "Two Kinds of No-Self",
+  "summary": "Buddhist practice notes and teachings - living-the-dharma-playlist-notes-lankavatara-sutra",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#living-the-dharma-playlist-notes-lankavatara-sutra"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Two Kinds of No-Self\n\n1. Egolessness of Persons\n    1. No me\n2. Egolessness of Things\n    1. No things\n",
+      "hashtags": ["#buddhism", "#living-the-dharma-playlist-notes-lankavatara-sutra"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

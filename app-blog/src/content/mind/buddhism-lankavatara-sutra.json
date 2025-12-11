@@ -1,0 +1,29 @@
+{
+  "title": "Lankavatara Sutra",
+  "summary": "Buddhist practice notes and teachings - living-the-dharma-playlist-notes",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#living-the-dharma-playlist-notes"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Lankavatara Sutra\n\n[Five Dharmas](Lankavatara%20Sutra/Five%20Dharmas%20a337a0ca0ace49948fe75544eb97b278.md)\n\n[Three Natures](Lankavatara%20Sutra/Three%20Natures%205c1ad8611c724bc1847423dfa8d7698f.md)\n\n[Eight Consciousnesses ](Lankavatara%20Sutra/Eight%20Consciousnesses%202202005058c74d7b9b10c27b2cc88c6d.md)\n\n[Two Kinds of No-Self](Lankavatara%20Sutra/Two%20Kinds%20of%20No-Self%202cacc34b214c4643bef1350aafe2c93d.md)\n",
+      "hashtags": ["#buddhism", "#living-the-dharma-playlist-notes"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

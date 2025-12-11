@@ -1,0 +1,29 @@
+{
+  "title": "Notes and Contemplations",
+  "summary": "Buddhist practice notes and teachings - notion-markdown-clean-buddhism",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notion-markdown-clean-buddhism"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Notes and Contemplations\n\n[Lojang’s 59 Slogans](Notes%20and%20Contemplations/Lojang%E2%80%99s%2059%20Slogans%20a5e181fee28948e290bffb2488d5f250.md)\n\n[Bodhisattva Thoughts and Notes](Notes%20and%20Contemplations/Bodhisattva%20Thoughts%20and%20Notes%20841642aacdd442669139665d11106ee7.md)\n\n[Suffering](Notes%20and%20Contemplations/Suffering%207703d177ddbc41cf96da7190b8a5907b.md)\n\n[The Four Immeasurables](Notes%20and%20Contemplations/The%20Four%20Immeasurables%2029b8c2054d2846b59598929d607cd436.md)\n\n[Sutra of the Three Heaps](Notes%20and%20Contemplations/Sutra%20of%20the%20Three%20Heaps%204bab5d52b56e4cb0aae19f7ca7531926.md)\n\n[Notes without a Category Yet](Notes%20and%20Contemplations/Notes%20without%20a%20Category%20Yet%207ed79c4dbff9405d814c24746d6c840d.md)\n\n[Prayer and Prostrations](Notes%20and%20Contemplations/Prayer%20and%20Prostrations%20190905ab4fd44195a6e59a8b5f2925db.md)\n\n[Paramitas - Six Perfections](Notes%20and%20Contemplations/Paramitas%20-%20Six%20Perfections%208b52bc36bf5c438cba47cbc33c6625a9.md)\n\n[Thich Naht Hanh](Notes%20and%20Contemplations/Thich%20Naht%20Hanh%2060ff084bcf424a46b0d72fe0a8584f1c.md)\n",
+      "hashtags": ["#buddhism", "#notion-markdown-clean-buddhism"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

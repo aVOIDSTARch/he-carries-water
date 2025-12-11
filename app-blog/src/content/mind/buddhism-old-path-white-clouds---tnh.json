@@ -1,0 +1,29 @@
+{
+  "title": "Old Path White Clouds - TNH",
+  "summary": "Buddhist practice notes and teachings - buddhism-books",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Old Path White Clouds - TNH\n\n[Book One](Old%20Path%20White%20Clouds%20-%20TNH/Book%20One%2041a0a0c53e334858bb2341543ec0103f.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

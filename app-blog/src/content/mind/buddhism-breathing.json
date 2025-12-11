@@ -1,0 +1,29 @@
+{
+  "title": "Breathing",
+  "summary": "Buddhist practice notes and teachings - meditation-mediation-videos",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#meditation-mediation-videos"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Breathing\n\n[The First 8 Exercises of Mindful Breathing | Thich Nhat Hanh (short teaching video)](https://youtu.be/O_iDaIAPrGo)\n",
+      "hashtags": ["#buddhism", "#meditation-mediation-videos"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

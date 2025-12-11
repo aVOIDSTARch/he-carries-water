@@ -1,0 +1,29 @@
+{
+  "title": "Introduction",
+  "summary": "Buddhist practice notes and teachings - buddhism-books-guide-to-bodhisattva’s-way-of-life",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books-guide-to-bodhisattva’s-way-of-life"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Introduction\n\n[Translator’s Notes](Introduction/Translator%E2%80%99s%20Notes%20c8bbd54e491e46d99f1e381846d6782d.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books-guide-to-bodhisattva’s-way-of-life"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

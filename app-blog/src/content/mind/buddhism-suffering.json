@@ -1,0 +1,29 @@
+{
+  "title": "Suffering",
+  "summary": "Buddhist practice notes and teachings - notes-and-contemplations",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notes-and-contemplations"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Suffering\n\n• My pain and internal hell of suffering is the manifestation of my deviance from a path I have always been on. I suffer only because the warmth of the Buddha-lit path has always been in my mind. My drive to be kind to atone for my sins is a lesson I already learned and am suffering more because I know better than I am behaving. This is the truth for all “humans.” We could not even be in this form were it not true for the Buddha tells us this is exceedingly rare and difficult. Think of the strength it took us to get here. We are all jewels in a dark cavern of  infinity. We need but dust ourselves off to illuminate the endlessness. ❤️\n",
+      "hashtags": ["#buddhism", "#notes-and-contemplations"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Quotes to Think About",
+  "summary": "Buddhist practice notes and teachings - buddhism-books-wise-heart",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books-wise-heart"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Quotes to Think About\n\n> …we suffer not because we have sinned but because we are blind\n> \n\n> Much of life cannot be explained; it can only be witnessed\n>\n",
+      "hashtags": ["#buddhism", "#buddhism-books-wise-heart"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

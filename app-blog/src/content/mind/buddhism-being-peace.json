@@ -1,0 +1,29 @@
+{
+  "title": "Being Peace",
+  "summary": "Buddhist practice notes and teachings - buddhism-books",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Being Peace\n\n# By Thich Nhat Hanh\n\n\n\n[Suffering is Not Enough](Being%20Peace/Suffering%20is%20Not%20Enough%204415b782327c4a13ba739c7153f47801.md)\n\n[The Three Gems](Being%20Peace/The%20Three%20Gems%20fe32270809fb43e796e9ba315810d1c8.md)\n\n[Feelings and Perceptions ](Being%20Peace/Feelings%20and%20Perceptions%201da471dd216641a99335f0fc8120a91b.md)\n\n[The Heart of Practice](Being%20Peace/The%20Heart%20of%20Practice%20119ebd8438964c06ba13c7c5404fecdd.md)\n\n[Working for Peace](Being%20Peace/Working%20for%20Peace%208766aabe2d3e43b685c0aca681077d0c.md)\n\n[Interbeing ](Being%20Peace/Interbeing%2066cc2d8926ae400593f30df233d764ec.md)\n\n[Tiep Hien  and the 14 Precepts](Being%20Peace/Tiep%20Hien%20and%20the%2014%20Precepts%20fc5cda1b915141d7b2e15ef134e226e6.md)\n\n[Meditation in Daily Life](Being%20Peace/Meditation%20in%20Daily%20Life%20dcdfd6248cff4e4495108b0d571f18d1.md)\n",
+      "hashtags": ["#buddhism", "#buddhism-books"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

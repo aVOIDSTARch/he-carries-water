@@ -1,0 +1,29 @@
+{
+  "title": "Bodhisattva Thoughts and Notes",
+  "summary": "Buddhist practice notes and teachings - notes-and-contemplations",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notes-and-contemplations"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Bodhisattva Thoughts and Notes\n\n- Universality\n\n\n- nirmanakaya\n- [https://en.m.wikipedia.org/wiki/Nirm%C4%81%E1%B9%87ak%C4%81ya](https://en.m.wikipedia.org/wiki/Nirm%C4%81%E1%B9%87ak%C4%81ya)\n",
+      "hashtags": ["#buddhism", "#notes-and-contemplations"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

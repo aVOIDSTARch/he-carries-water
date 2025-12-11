@@ -1,0 +1,29 @@
+{
+  "title": "Three Virtues",
+  "summary": "Buddhist practice notes and teachings - notes-and-contemplations-thich-naht-hanh",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#notes-and-contemplations-thich-naht-hanh"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Three Virtues\n\n[Ân Duc - Compassion](Three%20Virtues/%C3%82n%20Duc%20-%20Compassion%20aa097b30f63b43bba6df611ac8fded55.md)\n\n[Tri Duc - Wisdom](Three%20Virtues/Tri%20Duc%20-%20Wisdom%200131a46fe8e24dbaac1080ff1c736511.md)\n\n[Doam Duc - Cutting Off ](Three%20Virtues/Doam%20Duc%20-%20Cutting%20Off%20ecff5fba552a4196a1952ba32a736095.md)\n",
+      "hashtags": ["#buddhism", "#notes-and-contemplations-thich-naht-hanh"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}

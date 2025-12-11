@@ -1,0 +1,29 @@
+{
+  "title": "Translator’s Notes",
+  "summary": "Buddhist practice notes and teachings - buddhism-books-guide-to-bodhisattva’s-way-of-life-introduction",
+  "createdDate": "2025-12-11T18:28:30Z",
+  "updatedDate": "2025-12-11T18:28:30Z",
+  "hashtags": ["#buddhism", "#pre-website", "#buddhism-books-guide-to-bodhisattva’s-way-of-life-introduction"],
+  "status": "active",
+  "thoughts": [
+    {
+      "id": "thought-buddhism-001",
+      "date": "2025-12-11T18:28:30Z",
+      "content": "# Translator’s Notes\n\n- Shantideva was is a Buddhist master that lived in the eighth century CE\n- Book shows clearly how to integrate teaching’s with our daily lives\n- Praxis is the most important point behind this text\n\n\n- our problems exist solely in our head where our illusion of suffering exists\n- our problems are our deities\n- “the supreme good heart” through practice and release\n",
+      "hashtags": ["#buddhism", "#buddhism-books-guide-to-bodhisattva’s-way-of-life-introduction"]
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "created",
+      "description": "Imported from Notion export - pre-website content"
+    },
+    {
+      "date": "2025-12-11T18:28:30Z",
+      "action": "thought_added",
+      "description": "Added Buddhist teaching notes",
+      "thoughtId": "thought-buddhism-001"
+    }
+  ]
+}
