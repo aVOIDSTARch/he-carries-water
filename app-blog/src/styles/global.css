@@ -1,6 +1,6 @@
 /* global.css */
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 @theme {
   --color-accent: #E85A4F;
@@ -10,31 +10,18 @@
   --color-gray-dark: rgb(34, 41, 57);
   --color-black: rgb(15, 18, 25);
   
-  --font-atkinson: "Atkinson", sans-serif;
+  --font-body: "DM Sans", sans-serif;
   --font-mono: "Space Mono", monospace;
   
   /* Hard Brutalist Shadow */
   --shadow-custom: 4px 4px 0px 0px var(--color-black);
 }
 
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* DM Sans is loaded via Google Fonts import above */
 
 @layer base {
   body {
-    @apply font-atkinson m-0 p-0 text-left text-gray-dark text-[20px] leading-[1.7] break-words;
+    @apply font-body m-0 p-0 text-left text-gray-dark text-[20px] leading-[1.7] break-words;
     /* Tech Dot Grid Background */
     background-image: radial-gradient(var(--color-gray-light) 1px, transparent 1px), linear-gradient(to bottom, rgba(216, 195, 165, 0.5), #EAE7DC);
     background-size: 24px 24px, 100% 100%;
