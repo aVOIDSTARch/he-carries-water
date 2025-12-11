@@ -45,8 +45,9 @@ const mind = defineCollection({
 const events = defineCollection({
   // Load JSON files in the `src/content/events/` directory
   // Activity log for tracking website events (posts, comments, edits, etc.)
+  // Note: Each file contains an array of events, not a single event
   loader: glob({ base: "./src/content/events", pattern: "**/*.json" }),
-  schema: z.object({
+  schema: z.array(z.object({
     // Event metadata
     timestamp: z.coerce.date(),
     eventType: z.enum([
@@ -103,7 +104,7 @@ const events = defineCollection({
     ipAddress: z.string().optional(),
     userAgent: z.string().optional(),
     sessionId: z.string().optional(),
-  }),
+  })),
 });
 
 export const collections = { blog, mind, events };

@@ -1,12 +1,11 @@
 import type { APIRoute } from 'astro';
 import { getSession } from 'auth-astro/server';
 import { logPostCreated } from '../../../lib/audit-logger';
+import fs from 'fs/promises';
+import path from 'path';
 
 /**
- * API endpoint for creating blog posts
- *
- * This is an example implementation showing how to integrate audit logging
- * when creating blog posts through an API endpoint.
+ * API endpoint for creating blog posts from form data
  */
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -21,34 +20,72 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Parse request data
     const data = await request.json();
-    const { title, slug, content, description } = data;
+    const { title, slug, content, description, pubDate, heroImage } = data;
 
     // Validate required fields
-    if (!title || !slug) {
-      return new Response(JSON.stringify({ error: 'Title and slug are required' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+    if (!title || !slug || !content || !description) {
+      return new Response(
+        JSON.stringify({ error: 'Title, slug, description, and content are required' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
     }
 
-    // TODO: Implement actual blog post creation logic
-    // This would typically involve:
-    // 1. Creating a markdown file in src/content/blog/
-    // 2. Writing frontmatter and content
-    // 3. Optionally processing images
-    // 4. Validating against the schema
+    // Validate slug format (only lowercase letters, numbers, and hyphens)
+    const slugRegex = /^[a-z0-9-]+$/;
+    if (!slugRegex.test(slug)) {
+      return new Response(
+        JSON.stringify({
+          error: 'Invalid slug format. Use only lowercase letters, numbers, and hyphens.'
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
 
-    // Example of what you would do:
-    // const fs = require('fs/promises');
-    // const path = require('path');
-    // const blogPath = path.join(process.cwd(), 'src/content/blog', `${slug}.md`);
-    // const markdown = `---
-    // title: ${title}
-    // description: ${description}
-    // pubDate: ${new Date().toISOString()}
-    // ---
-    // ${content}`;
-    // await fs.writeFile(blogPath, markdown);
+    // Create the blog post file
+    const blogDir = path.join(process.cwd(), 'src/content/blog');
+    await fs.mkdir(blogDir, { recursive: true });
+
+    const blogFilePath = path.join(blogDir, `${slug}.md`);
+
+    // Check if file already exists
+    try {
+      await fs.access(blogFilePath);
+      return new Response(
+        JSON.stringify({ error: `A post with slug "${slug}" already exists` }),
+        {
+          status: 409,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    } catch {
+      // File doesn't exist, which is what we want
+    }
+
+    // Build frontmatter
+    const frontmatter = [
+      '---',
+      `title: "${title.replace(/"/g, '\\"')}"`,
+      `description: "${description.replace(/"/g, '\\"')}"`,
+      `pubDate: ${pubDate || new Date().toISOString()}`,
+    ];
+
+    if (heroImage) {
+      frontmatter.push(`heroImage: "${heroImage}"`);
+    }
+
+    frontmatter.push('---');
+
+    // Combine frontmatter and content
+    const markdown = frontmatter.join('\n') + '\n\n' + content;
+
+    // Write the file
+    await fs.writeFile(blogFilePath, markdown, 'utf-8');
 
     // Log the event
     await logPostCreated(
@@ -67,6 +104,7 @@ export const POST: APIRoute = async ({ request }) => {
         success: true,
         message: 'Blog post created successfully',
         slug,
+        title,
       }),
       {
         status: 201,

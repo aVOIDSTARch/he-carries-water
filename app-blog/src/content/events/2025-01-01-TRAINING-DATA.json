@@ -1,0 +1,564 @@
+[
+  {
+    "timestamp": "2025-01-01T08:00:00.000Z",
+    "eventType": "user_login",
+    "title": "[TRAINING DATA] User logged in: John Developer",
+    "description": "Training data - User successfully authenticated via GitHub",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "tags": ["TRAINING", "authentication", "login"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T08:15:00.000Z",
+    "eventType": "post_created",
+    "title": "[TRAINING DATA] New blog post: Understanding TypeScript",
+    "description": "Training data - Blog post created for testing purposes",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "understanding-typescript-test",
+      "title": "Understanding TypeScript",
+      "url": "/blog/understanding-typescript-test"
+    },
+    "tags": ["TRAINING", "blog", "content"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T09:30:00.000Z",
+    "eventType": "mind_idea_created",
+    "title": "[TRAINING DATA] Mind idea: AI and the Future",
+    "description": "Training data - New mind idea created for demo",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "ai-future-test",
+      "title": "AI and the Future",
+      "url": "/mind/ai-future-test"
+    },
+    "tags": ["TRAINING", "mind", "create"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T10:00:00.000Z",
+    "eventType": "post_updated",
+    "title": "[TRAINING DATA] Blog post updated: Understanding TypeScript",
+    "description": "Training data - Added code examples section",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "understanding-typescript-test",
+      "title": "Understanding TypeScript",
+      "url": "/blog/understanding-typescript-test"
+    },
+    "changes": {
+      "summary": "Added new section on generics and interfaces",
+      "before": {
+        "sections": 3
+      },
+      "after": {
+        "sections": 5
+      }
+    },
+    "tags": ["TRAINING", "blog", "update"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T10:45:00.000Z",
+    "eventType": "comment_added",
+    "title": "[TRAINING DATA] Comment on Understanding TypeScript",
+    "description": "Training data - User commented on blog post",
+    "user": {
+      "name": "Alice Reader",
+      "email": "alice@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "understanding-typescript-test",
+      "title": "Understanding TypeScript",
+      "url": "/blog/understanding-typescript-test"
+    },
+    "metadata": {
+      "commentId": "train-comment-001",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "comment", "engagement"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T11:20:00.000Z",
+    "eventType": "mind_thought_added",
+    "title": "[TRAINING DATA] Thought added to AI and the Future",
+    "description": "Training data - New thought about machine learning",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "ai-future-test",
+      "title": "AI and the Future",
+      "url": "/mind/ai-future-test"
+    },
+    "metadata": {
+      "thoughtId": "train-thought-001",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "mind", "thought"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T12:00:00.000Z",
+    "eventType": "media_uploaded",
+    "title": "[TRAINING DATA] Image uploaded: demo-hero.jpg",
+    "description": "Training data - Hero image for blog post",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "relatedContent": {
+      "type": "media",
+      "id": "train-media-001",
+      "title": "demo-hero.jpg"
+    },
+    "metadata": {
+      "fileSize": 512000,
+      "mimeType": "image/jpeg",
+      "dimensions": "1920x1080",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "media", "upload"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T12:30:00.000Z",
+    "eventType": "user_logout",
+    "title": "[TRAINING DATA] User logged out: John Developer",
+    "description": "Training data - User signed out",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "tags": ["TRAINING", "authentication", "logout"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T13:00:00.000Z",
+    "eventType": "system_update",
+    "title": "[TRAINING DATA] System configuration updated",
+    "description": "Training data - Updated site settings for testing",
+    "user": {
+      "id": "train-003",
+      "name": "System Admin",
+      "email": "admin@example.com"
+    },
+    "tags": ["TRAINING", "system", "config"],
+    "severity": "warning",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T14:15:00.000Z",
+    "eventType": "user_login",
+    "title": "[TRAINING DATA] User logged in: Sarah Designer",
+    "description": "Training data - Designer accessed the admin panel",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "tags": ["TRAINING", "authentication", "login"],
+    "severity": "info",
+    "ipAddress": "10.0.0.100",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T14:45:00.000Z",
+    "eventType": "post_created",
+    "title": "[TRAINING DATA] New blog post: CSS Grid Mastery",
+    "description": "Training data - Tutorial on CSS Grid layouts",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "css-grid-mastery-test",
+      "title": "CSS Grid Mastery",
+      "url": "/blog/css-grid-mastery-test"
+    },
+    "tags": ["TRAINING", "blog", "content", "css"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T15:30:00.000Z",
+    "eventType": "mind_idea_created",
+    "title": "[TRAINING DATA] Mind idea: Web Performance Tips",
+    "description": "Training data - Collection of performance optimization ideas",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "web-perf-tips-test",
+      "title": "Web Performance Tips",
+      "url": "/mind/web-perf-tips-test"
+    },
+    "tags": ["TRAINING", "mind", "performance"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T16:00:00.000Z",
+    "eventType": "comment_edited",
+    "title": "[TRAINING DATA] Comment edited on CSS Grid Mastery",
+    "description": "Training data - User updated their comment",
+    "user": {
+      "name": "Bob Reviewer",
+      "email": "bob@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "css-grid-mastery-test",
+      "title": "CSS Grid Mastery",
+      "url": "/blog/css-grid-mastery-test"
+    },
+    "metadata": {
+      "commentId": "train-comment-002",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "comment", "edit"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T16:45:00.000Z",
+    "eventType": "mind_thought_added",
+    "title": "[TRAINING DATA] Thought added to Web Performance Tips",
+    "description": "Training data - Note about lazy loading images",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "web-perf-tips-test",
+      "title": "Web Performance Tips",
+      "url": "/mind/web-perf-tips-test"
+    },
+    "metadata": {
+      "thoughtId": "train-thought-002",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "mind", "thought"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T17:30:00.000Z",
+    "eventType": "other",
+    "title": "[TRAINING DATA] Dashboard accessed by Sarah Designer",
+    "description": "Training data - Admin viewed dashboard",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "admin", "access"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T18:00:00.000Z",
+    "eventType": "post_deleted",
+    "title": "[TRAINING DATA] Blog post deleted: Draft Article",
+    "description": "Training data - Removed draft post that was no longer needed",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "draft-article-test",
+      "title": "Draft Article"
+    },
+    "tags": ["TRAINING", "blog", "delete"],
+    "severity": "warning",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T18:30:00.000Z",
+    "eventType": "media_uploaded",
+    "title": "[TRAINING DATA] Image uploaded: diagram-architecture.png",
+    "description": "Training data - Architecture diagram for documentation",
+    "user": {
+      "id": "train-003",
+      "name": "System Admin",
+      "email": "admin@example.com"
+    },
+    "relatedContent": {
+      "type": "media",
+      "id": "train-media-002",
+      "title": "diagram-architecture.png"
+    },
+    "metadata": {
+      "fileSize": 256000,
+      "mimeType": "image/png",
+      "dimensions": "1200x800",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "media", "upload"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T19:00:00.000Z",
+    "eventType": "user_login",
+    "title": "[TRAINING DATA] User logged in: Mike Tester",
+    "description": "Training data - QA tester accessed admin",
+    "user": {
+      "id": "train-004",
+      "name": "Mike Tester",
+      "email": "mike@example.com"
+    },
+    "tags": ["TRAINING", "authentication", "login"],
+    "severity": "info",
+    "ipAddress": "10.0.0.200",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T19:30:00.000Z",
+    "eventType": "mind_idea_updated",
+    "title": "[TRAINING DATA] Mind idea updated: AI and the Future",
+    "description": "Training data - Updated summary and added new tags",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "ai-future-test",
+      "title": "AI and the Future",
+      "url": "/mind/ai-future-test"
+    },
+    "changes": {
+      "summary": "Refined the main idea and categorization"
+    },
+    "tags": ["TRAINING", "mind", "update"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T20:00:00.000Z",
+    "eventType": "comment_deleted",
+    "title": "[TRAINING DATA] Comment deleted from Understanding TypeScript",
+    "description": "Training data - Spam comment removed",
+    "user": {
+      "id": "train-003",
+      "name": "System Admin",
+      "email": "admin@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "understanding-typescript-test",
+      "title": "Understanding TypeScript",
+      "url": "/blog/understanding-typescript-test"
+    },
+    "metadata": {
+      "commentId": "train-comment-003",
+      "reason": "spam",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "comment", "delete", "moderation"],
+    "severity": "warning"
+  },
+  {
+    "timestamp": "2025-01-01T20:30:00.000Z",
+    "eventType": "system_update",
+    "title": "[TRAINING DATA] Site theme colors updated",
+    "description": "Training data - Adjusted accent colors for better contrast",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "changes": {
+      "summary": "Updated primary and accent colors",
+      "before": {
+        "accentColor": "#FF6B35"
+      },
+      "after": {
+        "accentColor": "#FF7F50"
+      }
+    },
+    "tags": ["TRAINING", "system", "theme"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T21:00:00.000Z",
+    "eventType": "media_deleted",
+    "title": "[TRAINING DATA] Image deleted: old-banner.jpg",
+    "description": "Training data - Removed outdated banner image",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "relatedContent": {
+      "type": "media",
+      "id": "train-media-003",
+      "title": "old-banner.jpg"
+    },
+    "tags": ["TRAINING", "media", "delete"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T21:30:00.000Z",
+    "eventType": "post_updated",
+    "title": "[TRAINING DATA] Blog post updated: CSS Grid Mastery",
+    "description": "Training data - Fixed typos and added browser support table",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "css-grid-mastery-test",
+      "title": "CSS Grid Mastery",
+      "url": "/blog/css-grid-mastery-test"
+    },
+    "changes": {
+      "summary": "Grammar corrections and added compatibility info"
+    },
+    "tags": ["TRAINING", "blog", "update"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  },
+  {
+    "timestamp": "2025-01-01T22:00:00.000Z",
+    "eventType": "mind_thought_edited",
+    "title": "[TRAINING DATA] Thought edited in Web Performance Tips",
+    "description": "Training data - Updated performance metrics",
+    "user": {
+      "id": "train-001",
+      "name": "John Developer",
+      "email": "john@example.com"
+    },
+    "relatedContent": {
+      "type": "mind",
+      "id": "web-perf-tips-test",
+      "title": "Web Performance Tips",
+      "url": "/mind/web-perf-tips-test"
+    },
+    "metadata": {
+      "thoughtId": "train-thought-002",
+      "isTrainingData": true,
+      "canDelete": true
+    },
+    "tags": ["TRAINING", "mind", "thought", "edit"],
+    "severity": "info"
+  },
+  {
+    "timestamp": "2025-01-01T22:30:00.000Z",
+    "eventType": "user_logout",
+    "title": "[TRAINING DATA] User logged out: Sarah Designer",
+    "description": "Training data - Designer finished work session",
+    "user": {
+      "id": "train-002",
+      "name": "Sarah Designer",
+      "email": "sarah@example.com"
+    },
+    "tags": ["TRAINING", "authentication", "logout"],
+    "severity": "info",
+    "metadata": {
+      "isTrainingData": true,
+      "canDelete": true
+    }
+  }
+]

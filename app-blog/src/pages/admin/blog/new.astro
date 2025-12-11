@@ -1,0 +1,517 @@
+---
+import { getSession } from "auth-astro/server";
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+const session = await getSession(Astro.request);
+
+// Redirect to login if not authenticated
+if (!session) {
+  return Astro.redirect("/admin/login");
+}
+
+const user = session.user;
+---
+
+<AdminLayout title='New Blog Post'>
+  <div class='space-y-6'>
+    <!-- Header -->
+    <div class='border-2 border-black bg-accent/10 p-6 shadow-custom'>
+      <h1 class='text-3xl font-mono uppercase font-bold mb-2'>
+        Create New Blog Post
+      </h1>
+      <p class='font-mono text-gray-dark'>
+        Write a new post using the form below or upload a markdown file
+      </p>
+    </div>
+
+    <!-- Upload Method Tabs -->
+    <div class='border-2 border-black bg-white shadow-custom'>
+      <div class='flex border-b-2 border-black'>
+        <button
+          id='tab-form'
+          class='flex-1 px-6 py-3 font-mono uppercase font-bold border-r-2 border-black bg-accent text-white transition-all tab-button active'
+          data-tab='form'
+        >
+          Form Editor
+        </button>
+        <button
+          id='tab-upload'
+          class='flex-1 px-6 py-3 font-mono uppercase font-bold hover:bg-gray-100 transition-all tab-button'
+          data-tab='upload'
+        >
+          Upload Markdown
+        </button>
+      </div>
+
+      <!-- Form Editor Panel -->
+      <div id='panel-form' class='p-6 tab-panel'>
+        <form id='blog-form' class='space-y-6'>
+          <!-- Title -->
+          <div>
+            <label
+              for='title'
+              class='block text-sm font-mono uppercase font-bold mb-2'
+            >
+              Post Title *
+            </label>
+            <input
+              type='text'
+              id='title'
+              name='title'
+              required
+              class='w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:ring-2 focus:ring-accent'
+              placeholder='Enter post title...'
+            />
+          </div>
+
+          <!-- Slug -->
+          <div>
+            <label
+              for='slug'
+              class='block text-sm font-mono uppercase font-bold mb-2'
+            >
+              URL Slug *
+            </label>
+            <input
+              type='text'
+              id='slug'
+              name='slug'
+              required
+              class='w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:ring-2 focus:ring-accent'
+              placeholder='url-friendly-slug'
+            />
+            <p class='text-xs font-mono text-gray-dark mt-1'>
+              Will be auto-generated from title if left empty
+            </p>
+          </div>
+
+          <!-- Description -->
+          <div>
+            <label
+              for='description'
+              class='block text-sm font-mono uppercase font-bold mb-2'
+            >
+              Description *
+            </label>
+            <textarea
+              id='description'
+              name='description'
+              required
+              rows='3'
+              class='w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:ring-2 focus:ring-accent'
+              placeholder='Brief description for SEO and previews...'
+            ></textarea>
+          </div>
+
+          <!-- Content -->
+          <div>
+            <label
+              for='content'
+              class='block text-sm font-mono uppercase font-bold mb-2'
+            >
+              Post Content (Markdown) *
+            </label>
+            <textarea
+              id='content'
+              name='content'
+              required
+              rows='20'
+              class='w-full px-4 py-3 border-2 border-black font-mono text-sm focus:outline-none focus:ring-2 focus:ring-accent'
+              placeholder='Write your post content in Markdown...'
+            ></textarea>
+            <div class='flex justify-between items-center mt-2'>
+              <p class='text-xs font-mono text-gray-dark'>
+                Supports full Markdown and MDX syntax
+              </p>
+              <a
+                href='/markdown-guide'
+                target='_blank'
+                class='text-xs font-mono text-accent hover:underline'
+              >
+                Markdown Guide →
+              </a>
+            </div>
+          </div>
+
+          <!-- Publication Date -->
+          <div>
+            <label
+              for='pubDate'
+              class='block text-sm font-mono uppercase font-bold mb-2'
+            >
+              Publication Date *
+            </label>
+            <input
+              type='datetime-local'
+              id='pubDate'
+              name='pubDate'
+              required
+              class='w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:ring-2 focus:ring-accent'
+            />
+          </div>
+
+          <!-- Hero Image URL (optional) -->
+          <div>
+            <label
+              for='heroImage'
+              class='block text-sm font-mono uppercase font-bold mb-2'
+            >
+              Hero Image URL (Optional)
+            </label>
+            <input
+              type='url'
+              id='heroImage'
+              name='heroImage'
+              class='w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:ring-2 focus:ring-accent'
+              placeholder='https://example.com/image.jpg or /images/hero.jpg'
+            />
+            <p class='text-xs font-mono text-gray-dark mt-1'>
+              Relative path to image in /public or external URL
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class='flex gap-4 pt-4 border-t-2 border-black'>
+            <button
+              type='submit'
+              class='px-6 py-3 border-2 border-black bg-accent text-white font-mono uppercase font-bold hover:bg-accent-dark transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none'
+            >
+              Create Post
+            </button>
+            <button
+              type='button'
+              id='preview-btn'
+              class='px-6 py-3 border-2 border-black bg-white font-mono uppercase font-bold hover:bg-gray-100 transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none'
+            >
+              Preview
+            </button>
+            <a
+              href='/admin'
+              class='px-6 py-3 border-2 border-black bg-white font-mono uppercase font-bold hover:bg-gray-100 transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none'
+            >
+              Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Upload Markdown Panel -->
+      <div id='panel-upload' class='p-6 hidden tab-panel'>
+        <form id='upload-form' class='space-y-6'>
+          <!-- File Upload Area -->
+          <div>
+            <label class='block text-sm font-mono uppercase font-bold mb-4'>
+              Upload Markdown File *
+            </label>
+            <div
+              id='drop-zone'
+              class='border-4 border-dashed border-black p-12 text-center hover:bg-gray-50 transition-all cursor-pointer'
+            >
+              <input
+                type='file'
+                id='markdown-file'
+                name='file'
+                accept='.md,.mdx,.markdown'
+                class='hidden'
+              />
+              <div id='drop-zone-content'>
+                <svg
+                  class='mx-auto h-12 w-12 text-gray-400 mb-4'
+                  stroke='currentColor'
+                  fill='none'
+                  viewBox='0 0 48 48'
+                >
+                  <path
+                    d='M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02'
+                    stroke-width='2'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'></path>
+                </svg>
+                <p class='font-mono text-lg font-bold mb-2'>
+                  Drop markdown file here
+                </p>
+                <p class='font-mono text-sm text-gray-dark mb-4'>
+                  or click to browse
+                </p>
+                <p class='font-mono text-xs text-gray-dark'>
+                  Supports .md, .mdx, .markdown files
+                </p>
+              </div>
+              <div id='file-info' class='hidden'>
+                <p class='font-mono font-bold text-accent text-lg mb-2'>
+                  File selected:
+                </p>
+                <p id='file-name' class='font-mono text-sm'></p>
+                <button
+                  type='button'
+                  id='clear-file'
+                  class='mt-4 px-4 py-2 border-2 border-black bg-white font-mono text-sm hover:bg-gray-100'
+                >
+                  Clear File
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontmatter Options -->
+          <div class='border-2 border-black bg-gray-50 p-4'>
+            <h3 class='font-mono uppercase font-bold mb-3 text-sm'>
+              Expected Frontmatter Format
+            </h3>
+            <pre
+              class='font-mono text-xs bg-white border-2 border-black p-3 overflow-x-auto'><code>---
+title: "Your Post Title"
+description: "Brief description"
+pubDate: 2024-12-11
+heroImage: "/images/hero.jpg" # optional
+---
+
+Your markdown content here...</code></pre>
+            <p class='font-mono text-xs text-gray-dark mt-2'>
+              The file should include frontmatter with at least title,
+              description, and pubDate
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class='flex gap-4 pt-4 border-t-2 border-black'>
+            <button
+              type='submit'
+              class='px-6 py-3 border-2 border-black bg-accent text-white font-mono uppercase font-bold hover:bg-accent-dark transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none'
+            >
+              Upload & Create Post
+            </button>
+            <a
+              href='/admin'
+              class='px-6 py-3 border-2 border-black bg-white font-mono uppercase font-bold hover:bg-gray-100 transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none'
+            >
+              Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Help Section -->
+    <div class='border-2 border-black bg-blue-50 p-6 shadow-custom'>
+      <h3 class='font-mono uppercase font-bold mb-3 flex items-center gap-2'>
+        <span class='text-blue-600'>ℹ️</span>
+        Tips
+      </h3>
+      <ul class='space-y-2 font-mono text-sm'>
+        <li class='flex gap-2'>
+          <span class='text-blue-600'>•</span>
+          <span
+            >Use the form editor for quick posts or upload a pre-written
+            markdown file</span
+          >
+        </li>
+        <li class='flex gap-2'>
+          <span class='text-blue-600'>•</span>
+          <span>Slugs are auto-generated from titles but can be customized</span
+          >
+        </li>
+        <li class='flex gap-2'>
+          <span class='text-blue-600'>•</span>
+          <span
+            >Hero images should be placed in /public/images/ folder first</span
+          >
+        </li>
+        <li class='flex gap-2'>
+          <span class='text-blue-600'>•</span>
+          <span>Preview button shows how your post will look (coming soon)</span
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  // Tab switching
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabPanels = document.querySelectorAll(".tab-panel");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetTab = button.getAttribute("data-tab");
+
+      // Update active states
+      tabButtons.forEach((btn) => {
+        btn.classList.remove("active", "bg-accent", "text-white");
+        btn.classList.add("hover:bg-gray-100");
+      });
+      button.classList.add("active", "bg-accent", "text-white");
+      button.classList.remove("hover:bg-gray-100");
+
+      // Show/hide panels
+      tabPanels.forEach((panel) => {
+        panel.classList.add("hidden");
+      });
+      document.getElementById(`panel-${targetTab}`)?.classList.remove("hidden");
+    });
+  });
+
+  // Auto-generate slug from title
+  const titleInput = document.getElementById("title") as HTMLInputElement;
+  const slugInput = document.getElementById("slug") as HTMLInputElement;
+
+  titleInput?.addEventListener("input", () => {
+    if (!slugInput.value || slugInput.dataset.autoGenerated === "true") {
+      const slug = titleInput.value
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+      slugInput.value = slug;
+      slugInput.dataset.autoGenerated = "true";
+    }
+  });
+
+  slugInput?.addEventListener("input", () => {
+    if (slugInput.value) {
+      delete slugInput.dataset.autoGenerated;
+    }
+  });
+
+  // Set default publication date to now
+  const pubDateInput = document.getElementById("pubDate") as HTMLInputElement;
+  if (pubDateInput) {
+    const now = new Date();
+    const offset = now.getTimezoneOffset();
+    const localDate = new Date(now.getTime() - offset * 60 * 1000);
+    pubDateInput.value = localDate.toISOString().slice(0, 16);
+  }
+
+  // File upload handling
+  const dropZone = document.getElementById("drop-zone");
+  const fileInput = document.getElementById(
+    "markdown-file"
+  ) as HTMLInputElement;
+  const dropZoneContent = document.getElementById("drop-zone-content");
+  const fileInfo = document.getElementById("file-info");
+  const fileName = document.getElementById("file-name");
+  const clearFileBtn = document.getElementById("clear-file");
+
+  dropZone?.addEventListener("click", () => {
+    fileInput?.click();
+  });
+
+  dropZone?.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropZone.classList.add("bg-accent", "bg-opacity-10");
+  });
+
+  dropZone?.addEventListener("dragleave", () => {
+    dropZone.classList.remove("bg-accent", "bg-opacity-10");
+  });
+
+  dropZone?.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropZone.classList.remove("bg-accent", "bg-opacity-10");
+
+    const files = e.dataTransfer?.files;
+    if (files && files.length > 0) {
+      fileInput.files = files;
+      updateFileDisplay(files[0]);
+    }
+  });
+
+  fileInput?.addEventListener("change", (e) => {
+    const target = e.target as HTMLInputElement;
+    if (target.files && target.files.length > 0) {
+      updateFileDisplay(target.files[0]);
+    }
+  });
+
+  clearFileBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    fileInput.value = "";
+    dropZoneContent?.classList.remove("hidden");
+    fileInfo?.classList.add("hidden");
+  });
+
+  function updateFileDisplay(file: File) {
+    if (fileName) fileName.textContent = file.name;
+    dropZoneContent?.classList.add("hidden");
+    fileInfo?.classList.remove("hidden");
+  }
+
+  // Form submission
+  const blogForm = document.getElementById("blog-form");
+  blogForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("/api/blog/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("✅ Blog post created successfully!");
+        window.location.href = `/blog/${result.slug}`;
+      } else {
+        alert(`❌ Error: ${result.error || "Failed to create post"}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("❌ Network error. Please try again.");
+    }
+  });
+
+  // Upload form submission
+  const uploadForm = document.getElementById("upload-form");
+  uploadForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const file = fileInput?.files?.[0];
+    if (!file) {
+      alert("Please select a markdown file");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/blog/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("✅ Blog post uploaded successfully!");
+        window.location.href = `/blog/${result.slug}`;
+      } else {
+        alert(`❌ Error: ${result.error || "Failed to upload file"}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("❌ Network error. Please try again.");
+    }
+  });
+</script>
+
+<style>
+  .shadow-custom {
+    box-shadow: 4px 4px 0px 0px var(--color-black);
+  }
+
+  #drop-zone {
+    transition: all 0.2s;
+  }
+
+  #drop-zone:hover {
+    border-color: var(--color-accent);
+  }
+</style>

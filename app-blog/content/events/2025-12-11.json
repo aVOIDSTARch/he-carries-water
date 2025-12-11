@@ -229,5 +229,217 @@
     ],
     "severity": "info",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:11:52.327Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:11:52.619Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:12:34.759Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:12:35.105Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:14:33.249Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:14:54.491Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:19:12.994Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:19:13.344Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:20:40.882Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-11T23:26:40.391Z",
+    "eventType": "post_created",
+    "title": "New blog post created: testy treat",
+    "description": "Blog post \"testy treat\" was created",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "testy-treat",
+      "title": "testy treat",
+      "url": "/blog/testy-treat"
+    },
+    "tags": [
+      "blog",
+      "content",
+      "create"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
   }
 ]
