@@ -20,7 +20,28 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Parse request data
     const data = await request.json();
-    const { title, slug, content, description, pubDate, heroImage } = data;
+    let { title, slug, content, description, pubDate, heroImage } = data;
+
+    // Ensure pubDate is set and in correct format
+    if (!pubDate) {
+      // Use current date/time if not provided
+      const now = new Date();
+      pubDate = now.toISOString().split('.')[0]; // Format: YYYY-MM-DDTHH:MM:SS
+    } else {
+      // Validate and normalize the pubDate
+      try {
+        const dateObj = new Date(pubDate);
+        if (isNaN(dateObj.getTime())) {
+          throw new Error('Invalid date');
+        }
+        // Keep the original format if valid (YYYY-MM-DDTHH:MM from datetime-local input)
+        // This format is compatible with Astro's z.coerce.date()
+      } catch (e) {
+        // If invalid, use current date
+        const now = new Date();
+        pubDate = now.toISOString().split('.')[0];
+      }
+    }
 
     // Validate required fields
     if (!title || !slug || !content || !description) {
@@ -72,7 +93,7 @@ export const POST: APIRoute = async ({ request }) => {
       '---',
       `title: "${title.replace(/"/g, '\\"')}"`,
       `description: "${description.replace(/"/g, '\\"')}"`,
-      `pubDate: ${pubDate || new Date().toISOString()}`,
+      `pubDate: ${pubDate}`,
     ];
 
     if (heroImage) {

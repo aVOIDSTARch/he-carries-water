@@ -21,6 +21,10 @@ export default defineConfig({
   }),
   integrations: [mdx(), sitemap(), preact({ devtools: true }), auth()],
 
+  server: {
+    port: 2982,
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

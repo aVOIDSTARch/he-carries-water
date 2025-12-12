@@ -1,8 +1,8 @@
 ---
 title: "testy treat"
-description: "trial test data from form to make sure the form works"
-pubDate: 2025-12-11T18:24
-heroImage: "https://hipsum.co/wp-content/uploads/2020/02/hipsum-x.svg"
+description: "sample post"
+pubDate: 2025-12-11T18:55
+heroImage: "https://hookagency.com/wp-content/uploads/2024/10/hook-agency-logo-thick.svg"
 ---
 
 I'm baby typewriter PBR&B street art subway tile truffaut hexagon lumbersexual, man braid solarpunk readymade whatever photo booth cardigan. Organic butcher master cleanse, hoodie 8-bit yr narwhal forage. DSA mlkshk jawn etsy. Art party venmo enamel pin, chambray forage VHS PBR&B salvia. Hexagon chartreuse copper mug farm-to-table listicle meditation try-hard big mood. Locavore health goth etsy, photo booth fingerstache ennui banjo distillery pug twee.

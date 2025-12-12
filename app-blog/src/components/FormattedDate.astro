@@ -4,11 +4,29 @@ interface Props {
 }
 
 const { date } = Astro.props;
+
+// Ensure date is a proper Date object
+let dateObj: Date;
+if (date instanceof Date) {
+	dateObj = date;
+} else if (typeof date === 'string' || typeof date === 'number') {
+	dateObj = new Date(date);
+} else {
+	// Fallback to current date if invalid
+	console.warn('Invalid date received:', date);
+	dateObj = new Date();
+}
+
+// Check if the date is valid
+if (isNaN(dateObj.getTime())) {
+	console.warn('Invalid date value:', date);
+	dateObj = new Date();
+}
 ---
 
-<time datetime={date.toISOString()}>
+<time datetime={dateObj.toISOString()}>
 	{
-		date.toLocaleDateString('en-us', {
+		dateObj.toLocaleDateString('en-us', {
 			year: 'numeric',
 			month: 'short',
 			day: 'numeric',

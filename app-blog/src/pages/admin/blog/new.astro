@@ -150,23 +150,40 @@ const user = session.user;
             />
           </div>
 
-          <!-- Hero Image URL (optional) -->
+          <!-- Hero Image Upload/URL (optional) -->
           <div>
-            <label
-              for='heroImage'
-              class='block text-sm font-mono uppercase font-bold mb-2'
-            >
-              Hero Image URL (Optional)
+            <label class='block text-sm font-mono uppercase font-bold mb-2'>
+              Hero Image (Optional)
             </label>
+
+            <!-- Upload Button -->
+            <div class='mb-3'>
+              <input
+                type='file'
+                id='hero-image-file'
+                accept='image/jpeg,image/jpg,image/png,image/webp,image/gif'
+                class='hidden'
+              />
+              <button
+                type='button'
+                id='upload-hero-btn'
+                class='px-4 py-2 border-2 border-black bg-white font-mono text-sm hover:bg-gray-100 transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none'
+              >
+                📁 Upload Image
+              </button>
+              <span id='upload-status' class='ml-3 text-xs font-mono text-gray-dark'></span>
+            </div>
+
+            <!-- Manual Input (auto-populated by upload or manually entered) -->
             <input
-              type='url'
+              type='text'
               id='heroImage'
               name='heroImage'
               class='w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:ring-2 focus:ring-accent'
-              placeholder='https://example.com/image.jpg or /images/hero.jpg'
+              placeholder='../../assets/hero.jpg'
             />
             <p class='text-xs font-mono text-gray-dark mt-1'>
-              Relative path to image in /public or external URL
+              Upload an image or manually enter: "../../assets/image.jpg" for src/assets/, "/images/image.jpg" for public/images/, or an external URL
             </p>
           </div>
 
@@ -262,14 +279,15 @@ const user = session.user;
               class='font-mono text-xs bg-white border-2 border-black p-3 overflow-x-auto'><code>---
 title: "Your Post Title"
 description: "Brief description"
-pubDate: 2024-12-11
-heroImage: "/images/hero.jpg" # optional
+pubDate: 2024-12-11T10:00:00
+heroImage: "../../assets/your-post-title-hero.jpg" # optional
 ---
 
 Your markdown content here...</code></pre>
             <p class='font-mono text-xs text-gray-dark mt-2'>
               The file should include frontmatter with at least title,
-              description, and pubDate
+              description, and pubDate. For heroImage, use path format:
+              "../../assets/image.jpg" for src/assets/ or "/images/image.jpg" for public/images/
             </p>
           </div>
 
@@ -314,7 +332,18 @@ Your markdown content here...</code></pre>
         <li class='flex gap-2'>
           <span class='text-blue-600'>•</span>
           <span
-            >Hero images should be placed in /public/images/ folder first</span
+            >Use "📁 Upload Image" button to automatically upload and name hero images as slug-hero.jpg in src/assets/</span
+          >
+        </li>
+        <li class='flex gap-2'>
+          <span class='text-blue-600'>•</span>
+          <span
+            >Uploaded images are auto-named using your slug and saved to src/assets/ with the correct path</span
+          >
+        </li>
+        <li class='flex gap-2'>
+          <span class='text-blue-600'>•</span>
+          <span>Supported formats: JPG, PNG, WebP, GIF (max 5MB)</span
           >
         </li>
         <li class='flex gap-2'>
@@ -435,6 +464,66 @@ Your markdown content here...</code></pre>
     dropZoneContent?.classList.add("hidden");
     fileInfo?.classList.remove("hidden");
   }
+
+  // Hero image upload handling
+  const heroImageFile = document.getElementById("hero-image-file") as HTMLInputElement;
+  const uploadHeroBtn = document.getElementById("upload-hero-btn");
+  const uploadStatus = document.getElementById("upload-status");
+  const heroImageInput = document.getElementById("heroImage") as HTMLInputElement;
+
+  uploadHeroBtn?.addEventListener("click", () => {
+    heroImageFile?.click();
+  });
+
+  heroImageFile?.addEventListener("change", async () => {
+    const file = heroImageFile.files?.[0];
+    if (!file) return;
+
+    // Show uploading status
+    if (uploadStatus) {
+      uploadStatus.textContent = "Uploading...";
+      uploadStatus.className = "ml-3 text-xs font-mono text-blue-600";
+    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    // Use slug if available for naming
+    const slugInput = document.getElementById("slug") as HTMLInputElement;
+    if (slugInput?.value) {
+      formData.append("slug", slugInput.value);
+    }
+
+    try {
+      const response = await fetch("/api/upload-image", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Auto-populate the heroImage field with the uploaded image path
+        heroImageInput.value = result.path;
+
+        if (uploadStatus) {
+          uploadStatus.textContent = `✓ ${result.filename} uploaded`;
+          uploadStatus.className = "ml-3 text-xs font-mono text-green-600";
+        }
+      } else {
+        if (uploadStatus) {
+          uploadStatus.textContent = `✗ ${result.error || "Upload failed"}`;
+          uploadStatus.className = "ml-3 text-xs font-mono text-red-600";
+        }
+      }
+    } catch (error) {
+      console.error("Upload error:", error);
+      if (uploadStatus) {
+        uploadStatus.textContent = "✗ Network error";
+        uploadStatus.className = "ml-3 text-xs font-mono text-red-600";
+      }
+    }
+  });
 
   // Form submission
   const blogForm = document.getElementById("blog-form");

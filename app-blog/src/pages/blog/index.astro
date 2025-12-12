@@ -21,16 +21,19 @@ const posts = (await getCollection('blog')).sort(
 		<Header />
 		<main class="w-full max-w-[960px] mx-auto p-4">
 			<section>
-				<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-0 m-0 list-none">
+				<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-0 m-0 list-none">
 	{
-		posts.map((post, index) => (
-			<li class:list={["border-2 border-black bg-white shadow-custom transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none p-4", { "md:col-span-2": index === 0 }]}>
-				<a href={`/blog/${post.id}/`} class="block no-underline border-none hover:bg-transparent p-0">
-					<div class="mb-4 overflow-hidden border-2 border-black">
-						<Image width={720} height={360} src={post.data.heroImage} alt="" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105" />
-					</div>
-					<h4 class="text-2xl font-bold font-mono leading-tight mb-2 uppercase text-black group-hover:text-accent border-b-2 border-transparent group-hover:border-accent inline-block">{post.data.title}</h4>
-					<p class="text-gray font-mono text-sm mb-0">
+		posts.map((post) => (
+			<li class="border-2 border-black bg-white shadow-custom transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none p-4 flex flex-col">
+				<a href={`/blog/${post.id}/`} class="block no-underline border-none hover:bg-transparent p-0 flex-1 flex flex-col">
+					{post.data.heroImage && (
+						<div class="mb-4 overflow-hidden border-2 border-black aspect-video">
+							<Image width={400} height={225} src={post.data.heroImage} alt="" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105" />
+						</div>
+					)}
+					<h4 class="text-xl font-bold font-mono leading-tight mb-2 uppercase text-black group-hover:text-accent">{post.data.title}</h4>
+					<p class="text-gray-dark font-mono text-xs mb-2 line-clamp-2">{post.data.description}</p>
+					<p class="text-gray font-mono text-xs mt-auto">
 						<FormattedDate date={post.data.pubDate} />
 					</p>
 				</a>
