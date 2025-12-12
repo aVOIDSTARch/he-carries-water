@@ -1,6 +1,7 @@
 import GitHub from "@auth/core/providers/github";
 import { defineConfig } from "auth-astro";
 import { logUserLogin } from "./src/lib/audit-logger";
+import { logServerEvent, ProcessSource } from "./src/lib/server-logger";
 
 export default defineConfig({
   providers: [
@@ -22,26 +23,22 @@ export default defineConfig({
     async signIn({ user, account, profile }) {
       // Only allow specific GitHub username
       const allowedUsername = import.meta.env.ADMIN_GITHUB_USERNAME;
+      const isMatch = profile?.login === allowedUsername;
 
-      console.log('Sign in attempt:', {
-        profileLogin: profile?.login,
-        allowedUsername: allowedUsername,
-        match: profile?.login === allowedUsername
+      logServerEvent({
+        source: ProcessSource.AUTH_SERVER,
+        level: isMatch ? 'INFO' : 'WARN',
+        message: isMatch ? `Access granted to: ${profile?.login}` : `Access denied to: ${profile?.login}`,
+        context: {
+          profileLogin: profile?.login,
+          allowedUsername: allowedUsername,
+          match: isMatch
+        }
       });
 
-      if (profile?.login === allowedUsername) {
-        console.log('✅ Access granted to:', profile.login);
-
-        // Log successful login
-        await logUserLogin({
-          id: user?.id as string | undefined,
-          name: (user?.name || profile?.name || profile?.login) as string | undefined,
-          email: (user?.email || profile?.email) ?? undefined,
-        });
-
+      if (isMatch) {
         return true;
       }
-
       console.log('❌ Access denied to:', profile?.login);
       // Deny access to anyone else
       return false;
