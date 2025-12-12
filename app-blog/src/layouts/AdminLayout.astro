@@ -89,6 +89,16 @@ const isActive = (path: string) => {
 						>
 							Audit Log
 						</a>
+						<a
+							href="/admin/projects"
+							class={`block px-3 py-2 border-2 border-black font-mono transition-all ${
+								isActive('/admin/projects')
+									? 'bg-accent text-white'
+									: 'hover:bg-accent hover:text-white'
+							}`}
+						>
+							Projects
+						</a>
 					</nav>
 
 					<div class="mt-8 pt-6 border-t-2 border-black">

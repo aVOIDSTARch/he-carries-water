@@ -1,0 +1,352 @@
+---
+import { getSession } from 'auth-astro/server';
+import AdminLayout from '../../layouts/AdminLayout.astro';
+
+const session = await getSession(Astro.request);
+
+// Redirect to login if not authenticated
+if (!session) {
+  return Astro.redirect('/admin/login');
+}
+---
+
+<AdminLayout title="Manage Projects">
+  <div class="space-y-6">
+    <!-- Header -->
+    <div class="border-2 border-black bg-accent/10 p-6 shadow-custom">
+      <h1 class="text-3xl font-mono uppercase font-bold mb-2">
+        GitHub Projects
+      </h1>
+      <p class="font-mono text-gray-dark">
+        Select which repositories to showcase on your dev page
+      </p>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="border-2 border-black bg-white p-4 shadow-custom">
+      <div class="flex flex-wrap gap-4 items-center justify-between">
+        <div class="flex flex-wrap gap-4 text-sm font-mono">
+          <span>
+            Last Scanned: <span id="last-scanned" class="text-accent-dark font-bold">Loading...</span>
+          </span>
+          <span>
+            Last Synced: <span id="last-synced" class="text-accent-dark font-bold">Loading...</span>
+          </span>
+          <span>
+            Selected: <span id="selected-count" class="text-accent-dark font-bold">0</span>
+          </span>
+        </div>
+        <div class="flex gap-2">
+          <button
+            id="save-btn"
+            class="px-4 py-2 border-2 border-black bg-accent text-white font-mono uppercase font-bold hover:bg-accent-dark transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled
+          >
+            Save Selection
+          </button>
+          <button
+            id="sync-btn"
+            class="px-4 py-2 border-2 border-black bg-green-600 text-white font-mono uppercase font-bold hover:bg-green-700 transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled
+          >
+            Sync Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading" class="border-2 border-black bg-white p-8 shadow-custom text-center">
+      <div class="font-mono text-lg animate-pulse">
+        <span class="text-accent-dark">&gt;</span> Fetching repositories from GitHub...
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="error" class="hidden border-2 border-black bg-red-100 p-6 shadow-custom">
+      <h3 class="font-mono font-bold text-red-700 mb-2">Error Loading Repositories</h3>
+      <p id="error-message" class="font-mono text-sm text-red-600"></p>
+      <button
+        id="retry-btn"
+        class="mt-4 px-4 py-2 border-2 border-black bg-white font-mono uppercase hover:bg-gray-100 transition-all"
+      >
+        Retry
+      </button>
+    </div>
+
+    <!-- Repository List -->
+    <div id="repo-list" class="hidden space-y-3">
+      <!-- Repos will be inserted here -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty" class="hidden border-2 border-black bg-white p-8 shadow-custom text-center">
+      <p class="font-mono text-gray-dark">No repositories found.</p>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  interface RepoData {
+    id: number;
+    name: string;
+    fullName: string;
+    description: string;
+    url: string;
+    stars: number;
+    forks: number;
+    language: string | null;
+    topics: string[];
+    pushedAt: string;
+    isArchived: boolean;
+    isFork: boolean;
+    isNew: boolean;
+    isSelected: boolean;
+    owner: string;
+  }
+
+  interface ApiResponse {
+    repos: RepoData[];
+    lastScannedAt: string | null;
+    lastSyncedAt: string | null;
+    totalRepos: number;
+    newRepos: number;
+    selectedCount: number;
+    error?: string;
+    message?: string;
+  }
+
+  let repos: RepoData[] = [];
+  let selectedRepos: Set<string> = new Set();
+  let hasChanges = false;
+
+  const loadingEl = document.getElementById('loading')!;
+  const errorEl = document.getElementById('error')!;
+  const errorMessageEl = document.getElementById('error-message')!;
+  const repoListEl = document.getElementById('repo-list')!;
+  const emptyEl = document.getElementById('empty')!;
+  const saveBtn = document.getElementById('save-btn') as HTMLButtonElement;
+  const syncBtn = document.getElementById('sync-btn') as HTMLButtonElement;
+  const retryBtn = document.getElementById('retry-btn')!;
+  const lastScannedEl = document.getElementById('last-scanned')!;
+  const lastSyncedEl = document.getElementById('last-synced')!;
+  const selectedCountEl = document.getElementById('selected-count')!;
+
+  function formatDate(dateStr: string | null): string {
+    if (!dateStr) return 'Never';
+    const date = new Date(dateStr);
+    return date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  }
+
+  function updateSelectedCount() {
+    selectedCountEl.textContent = selectedRepos.size.toString();
+    saveBtn.disabled = !hasChanges;
+    syncBtn.disabled = selectedRepos.size === 0;
+  }
+
+  function renderRepos() {
+    if (repos.length === 0) {
+      repoListEl.classList.add('hidden');
+      emptyEl.classList.remove('hidden');
+      return;
+    }
+
+    emptyEl.classList.add('hidden');
+    repoListEl.classList.remove('hidden');
+
+    // Sort: new first, then selected, then by stars
+    const sortedRepos = [...repos].sort((a, b) => {
+      if (a.isNew !== b.isNew) return a.isNew ? -1 : 1;
+      if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
+      return b.stars - a.stars;
+    });
+
+    repoListEl.innerHTML = sortedRepos.map(repo => `
+      <div class="border-2 border-black bg-white shadow-[2px_2px_0px_0px_black] overflow-hidden ${repo.isNew ? 'ring-2 ring-yellow-400' : ''}">
+        <label class="flex items-start gap-4 p-4 cursor-pointer hover:bg-gray-50 transition-colors">
+          <input
+            type="checkbox"
+            name="repo"
+            value="${repo.name}"
+            data-owner="${repo.owner}"
+            ${selectedRepos.has(repo.name) ? 'checked' : ''}
+            class="mt-1 w-5 h-5 border-2 border-black accent-accent cursor-pointer"
+          />
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="font-mono font-bold text-lg">${repo.name}</h3>
+              ${repo.isNew ? '<span class="px-2 py-0.5 bg-yellow-300 border border-black text-xs font-mono uppercase font-bold">NEW</span>' : ''}
+              ${repo.isArchived ? '<span class="px-2 py-0.5 bg-gray-300 border border-black text-xs font-mono uppercase">Archived</span>' : ''}
+              ${repo.isFork ? '<span class="px-2 py-0.5 bg-blue-100 border border-black text-xs font-mono uppercase">Fork</span>' : ''}
+            </div>
+            <p class="font-mono text-sm text-gray-dark mt-1 line-clamp-2">${repo.description || 'No description'}</p>
+            <div class="flex flex-wrap gap-3 mt-2 text-xs font-mono text-gray">
+              ${repo.language ? `<span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-accent"></span>${repo.language}</span>` : ''}
+              <span>★ ${repo.stars}</span>
+              <span>🍴 ${repo.forks}</span>
+              <span>Updated: ${formatDate(repo.pushedAt)}</span>
+            </div>
+            ${repo.topics.length > 0 ? `
+              <div class="flex flex-wrap gap-1 mt-2">
+                ${repo.topics.slice(0, 5).map(t => `<span class="px-1.5 py-0.5 bg-accent/10 border border-accent text-xs font-mono">${t}</span>`).join('')}
+                ${repo.topics.length > 5 ? `<span class="text-xs font-mono text-gray">+${repo.topics.length - 5} more</span>` : ''}
+              </div>
+            ` : ''}
+          </div>
+          <a
+            href="${repo.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-2 py-1 border border-black text-xs font-mono hover:bg-black hover:text-white transition-colors"
+            onclick="event.stopPropagation()"
+          >
+            View →
+          </a>
+        </label>
+      </div>
+    `).join('');
+
+    // Add change listeners
+    repoListEl.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        if (target.checked) {
+          selectedRepos.add(target.value);
+        } else {
+          selectedRepos.delete(target.value);
+        }
+        hasChanges = true;
+        updateSelectedCount();
+      });
+    });
+  }
+
+  async function loadRepos() {
+    loadingEl.classList.remove('hidden');
+    errorEl.classList.add('hidden');
+    repoListEl.classList.add('hidden');
+    emptyEl.classList.add('hidden');
+
+    try {
+      const response = await fetch('/api/projects/list-repos');
+      const data: ApiResponse = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || data.error || 'Failed to load repositories');
+      }
+
+      repos = data.repos;
+      selectedRepos = new Set(repos.filter(r => r.isSelected).map(r => r.name));
+      hasChanges = false;
+
+      lastScannedEl.textContent = formatDate(data.lastScannedAt);
+      lastSyncedEl.textContent = formatDate(data.lastSyncedAt);
+
+      loadingEl.classList.add('hidden');
+      renderRepos();
+      updateSelectedCount();
+    } catch (error) {
+      loadingEl.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      errorMessageEl.textContent = error instanceof Error ? error.message : 'Unknown error';
+    }
+  }
+
+  async function saveSelection() {
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving...';
+
+    try {
+      const selectedArray = repos
+        .filter(r => selectedRepos.has(r.name))
+        .map((r, i) => ({
+          owner: r.owner,
+          repo: r.name,
+          order: i,
+        }));
+
+      const response = await fetch('/api/projects/save-config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ selectedRepos: selectedArray }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to save');
+      }
+
+      hasChanges = false;
+      saveBtn.textContent = 'Saved!';
+      setTimeout(() => {
+        saveBtn.textContent = 'Save Selection';
+        updateSelectedCount();
+      }, 2000);
+    } catch (error) {
+      saveBtn.textContent = 'Error!';
+      setTimeout(() => {
+        saveBtn.textContent = 'Save Selection';
+        saveBtn.disabled = false;
+      }, 2000);
+      console.error('Save error:', error);
+    }
+  }
+
+  async function syncProjects() {
+    syncBtn.disabled = true;
+    syncBtn.textContent = 'Syncing...';
+
+    try {
+      const response = await fetch('/api/projects/sync', {
+        method: 'POST',
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to sync');
+      }
+
+      lastSyncedEl.textContent = formatDate(data.lastSyncedAt);
+      syncBtn.textContent = `Synced ${data.synced}!`;
+      setTimeout(() => {
+        syncBtn.textContent = 'Sync Now';
+        syncBtn.disabled = selectedRepos.size === 0;
+      }, 2000);
+    } catch (error) {
+      syncBtn.textContent = 'Error!';
+      setTimeout(() => {
+        syncBtn.textContent = 'Sync Now';
+        syncBtn.disabled = false;
+      }, 2000);
+      console.error('Sync error:', error);
+    }
+  }
+
+  // Event listeners
+  saveBtn.addEventListener('click', saveSelection);
+  syncBtn.addEventListener('click', syncProjects);
+  retryBtn.addEventListener('click', loadRepos);
+
+  // Initial load
+  loadRepos();
+</script>
+
+<style>
+  .shadow-custom {
+    box-shadow: 4px 4px 0px 0px var(--color-black);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

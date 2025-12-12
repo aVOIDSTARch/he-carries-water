@@ -42,6 +42,41 @@ const mind = defineCollection({
   }),
 });
 
+const projects = defineCollection({
+  // Load JSON files in the `src/content/projects/` directory
+  // Each file contains synced GitHub project data
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.json" }),
+  schema: z.object({
+    slug: z.string(),
+    githubUrl: z.string(),
+    owner: z.string(),
+    repo: z.string(),
+    name: z.string(),
+    description: z.string(),
+    stars: z.number(),
+    forks: z.number(),
+    language: z.string().nullable(),
+    topics: z.array(z.string()),
+    license: z.string().nullable(),
+    lastPushed: z.coerce.date(),
+    homepage: z.string().nullable(),
+    contributors: z.array(z.object({
+      login: z.string(),
+      avatarUrl: z.string(),
+      contributions: z.number(),
+      profileUrl: z.string(),
+    })),
+    latestRelease: z.object({
+      tag: z.string(),
+      name: z.string(),
+      publishedAt: z.coerce.date(),
+      url: z.string(),
+    }).nullable(),
+    readme: z.string(),
+    lastSyncedAt: z.coerce.date(),
+  }),
+});
+
 const events = defineCollection({
   // Load JSON files in the `src/content/events/` directory
   // Activity log for tracking website events (posts, comments, edits, etc.)
@@ -107,4 +142,4 @@ const events = defineCollection({
   })),
 });
 
-export const collections = { blog, mind, events };
+export const collections = { blog, mind, events, projects };

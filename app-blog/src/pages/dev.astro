@@ -2,117 +2,96 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get all projects from content collection
+const projects = await getCollection('projects');
+
+// Sort by order, then by stars
+const sortedProjects = projects.sort((a, b) => {
+	// Featured first
+	if (a.data.featured !== b.data.featured) {
+		return a.data.featured ? -1 : 1;
+	}
+	// Then by order
+	if (a.data.order !== b.data.order) {
+		return (a.data.order ?? 999) - (b.data.order ?? 999);
+	}
+	// Then by stars
+	return b.data.stars - a.data.stars;
+});
+
+const hasProjects = projects.length > 0;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title="Dev Zone - Under Construction" description="Development section coming soon" />
+		<BaseHead title="Dev Projects" description="My open source projects and experiments" />
 	</head>
 	<body>
 		<Header />
-		<main class="w-full max-w-[900px] mx-auto p-4 min-h-screen flex items-center justify-center">
-			<div class="w-full">
-				<!-- Main Construction Banner -->
-				<div class="border-4 border-black bg-yellow-300 p-8 mb-8 shadow-[8px_8px_0px_0px_black] animate-pulse">
-					<h1 class="text-6xl md:text-8xl font-mono font-bold uppercase text-center mb-4 text-black">
-						⚠️ CAUTION ⚠️
-					</h1>
-					<p class="text-2xl md:text-3xl font-mono text-center text-black uppercase font-bold">
-						Dev Zone Under Construction
-					</p>
-				</div>
+		<main class="w-full max-w-[900px] mx-auto p-4 min-h-screen">
+			<!-- Page Header -->
+			<div class="border-2 border-black bg-white p-6 mb-8 shadow-custom">
+				<h1 class="text-4xl font-mono uppercase font-bold mb-2">
+					<span class="text-accent-dark">&gt;</span> Dev Zone
+				</h1>
+				<p class="font-mono text-gray-dark">
+					Open source projects, experiments, and things I've built
+				</p>
+			</div>
 
-				<!-- ASCII Art Construction Worker -->
-				<div class="border-2 border-black bg-white p-6 mb-8 shadow-custom">
-					<pre class="font-mono text-xs md:text-sm overflow-x-auto text-center">
-{`
-    ___
-   /   \\     
-  | O O |    < "I'm building stuff!"
-   \\___/     
-    |||      
-   /| |\\    
-  / | | \\   
-    | |      
-   _| |_     
-  |_____|    
-`}
-					</pre>
-				</div>
-
-				<!-- Status Messages -->
-				<div class="space-y-4 mb-8">
-					<div class="border-2 border-black bg-accent/20 p-4 shadow-custom">
-						<p class="font-mono text-sm">
-							<span class="text-accent-dark font-bold">&gt;</span> STATUS: Currently debugging reality...
+			{hasProjects ? (
+				<>
+					<!-- Featured Projects Grid -->
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+						{sortedProjects.map(project => (
+							<ProjectCard
+								name={project.data.name}
+								description={project.data.description}
+								slug={project.data.slug}
+								language={project.data.language}
+								stars={project.data.stars}
+								topics={project.data.topics}
+								lastPushed={project.data.lastPushed}
+								githubUrl={project.data.githubUrl}
+							/>
+						))}
+					</div>
+				</>
+			) : (
+				<!-- Empty State - Under Construction -->
+				<div class="space-y-6">
+					<div class="border-4 border-black bg-yellow-300 p-8 shadow-[8px_8px_0px_0px_black]">
+						<h2 class="text-4xl md:text-6xl font-mono font-bold uppercase text-center mb-4 text-black">
+							🚧 Coming Soon 🚧
+						</h2>
+						<p class="text-xl font-mono text-center text-black uppercase font-bold">
+							Projects are being synced from GitHub
 						</p>
 					</div>
-					
-					<div class="border-2 border-black bg-accent/20 p-4 shadow-custom">
-						<p class="font-mono text-sm">
-							<span class="text-accent-dark font-bold">&gt;</span> PROGRESS: 42% (the answer to everything)
-						</p>
-					</div>
-					
-					<div class="border-2 border-black bg-accent/20 p-4 shadow-custom">
-						<p class="font-mono text-sm">
-							<span class="text-accent-dark font-bold">&gt;</span> ETA: When the code compiles on the first try
-						</p>
+
+					<div class="border-2 border-black bg-black p-6 shadow-custom">
+						<div class="font-mono text-sm text-green-400">
+							<p class="mb-2">$ npm run sync-projects</p>
+							<p class="mb-2 text-yellow-400">⚡ Fetching repositories from GitHub...</p>
+							<p class="mb-2">✓ Connecting to API</p>
+							<p class="mb-2">✓ Authenticating</p>
+							<p class="text-yellow-400 animate-pulse">⏳ Waiting for admin to select projects...</p>
+						</div>
 					</div>
 				</div>
+			)}
 
-				<!-- Fake Terminal Output -->
-				<div class="border-2 border-black bg-black p-6 shadow-custom mb-8">
-					<div class="font-mono text-sm text-green-400">
-						<p class="mb-2">$ npm run build-dev-section</p>
-						<p class="mb-2 text-yellow-400">⚡ Building development portfolio...</p>
-						<p class="mb-2">✓ Compiling eccentric ideas</p>
-						<p class="mb-2">✓ Bundling creative chaos</p>
-						<p class="mb-2">✓ Minifying perfectionism</p>
-						<p class="mb-2 text-red-400">✗ Error: Too many cool projects to choose from</p>
-						<p class="mb-2 text-gray-400">  at selectProjects (brain.js:404)</p>
-						<p class="text-yellow-400 animate-pulse">⏳ Refactoring... please stand by...</p>
-					</div>
-				</div>
-
-				<!-- Coming Soon Features -->
-				<div class="border-2 border-black bg-white p-6 shadow-custom">
-					<h2 class="text-2xl font-mono uppercase font-bold mb-4 border-b-2 border-black pb-2">
-						Coming Soon™
-					</h2>
-					<ul class="space-y-2 font-mono text-sm">
-						<li class="flex items-start">
-							<span class="text-accent-dark mr-2">▸</span>
-							<span>Code projects that actually work (most of the time)</span>
-						</li>
-						<li class="flex items-start">
-							<span class="text-accent-dark mr-2">▸</span>
-							<span>Experiments that may or may not have succeeded</span>
-						</li>
-						<li class="flex items-start">
-							<span class="text-accent-dark mr-2">▸</span>
-							<span>Technical writings about things I've learned</span>
-						</li>
-						<li class="flex items-start">
-							<span class="text-accent-dark mr-2">▸</span>
-							<span>Open source contributions and side quests</span>
-						</li>
-						<li class="flex items-start">
-							<span class="text-accent-dark mr-2">▸</span>
-							<span>Proof that I can, in fact, center a div</span>
-						</li>
-					</ul>
-				</div>
-
-				<!-- Back Button -->
-				<div class="mt-8 text-center">
-					<a 
-						href="/" 
-						class="inline-block px-6 py-3 border-2 border-black bg-white font-mono uppercase font-bold hover:bg-accent hover:text-white transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none"
-					>
-						← Back to Safety
-					</a>
-				</div>
+			<!-- Back Button -->
+			<div class="mt-8 text-center">
+				<a
+					href="/"
+					class="inline-block px-6 py-3 border-2 border-black bg-white font-mono uppercase font-bold hover:bg-accent hover:text-white transition-all shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none"
+				>
+					← Back Home
+				</a>
 			</div>
 		</main>
 		<Footer />
@@ -123,7 +102,7 @@ import Footer from '../components/Footer.astro';
 	.shadow-custom {
 		box-shadow: 4px 4px 0px 0px var(--color-black);
 	}
-	
+
 	@keyframes pulse {
 		0%, 100% {
 			opacity: 1;
@@ -132,7 +111,7 @@ import Footer from '../components/Footer.astro';
 			opacity: 0.7;
 		}
 	}
-	
+
 	.animate-pulse {
 		animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 	}
