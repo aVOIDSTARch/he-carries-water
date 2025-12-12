@@ -1,14 +1,15 @@
 ---
-import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import Comments from '../../components/Comments.astro';
-import { marked } from 'marked';
+export const prerender = true;
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Comments from "../../components/Comments.astro";
+import { marked } from "marked";
 
 export const getStaticPaths = (async () => {
-	const ideas = await getCollection('mind');
+	const ideas = await getCollection("mind");
 	return ideas.map((idea) => ({
 		params: { slug: idea.id },
 		props: { idea },
@@ -16,16 +17,26 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { idea } = Astro.props;
-const { title, summary, createdDate, updatedDate, hashtags, thoughts, changelog, status } = idea.data;
+const {
+	title,
+	summary,
+	createdDate,
+	updatedDate,
+	hashtags,
+	thoughts,
+	changelog,
+	status,
+} = idea.data;
 
 // Format dates
-const formatDate = (date: Date) => date.toLocaleDateString('en-US', { 
-	year: 'numeric', 
-	month: 'short', 
-	day: 'numeric',
-	hour: '2-digit',
-	minute: '2-digit'
-});
+const formatDate = (date: Date) =>
+	date.toLocaleDateString("en-US", {
+		year: "numeric",
+		month: "short",
+		day: "numeric",
+		hour: "2-digit",
+		minute: "2-digit",
+	});
 ---
 
 <html lang="en">
@@ -37,34 +48,77 @@ const formatDate = (date: Date) => date.toLocaleDateString('en-US', {
 		<main class="w-full max-w-[800px] mx-auto p-4 relative">
 			<!-- Header Section -->
 			<div class="mb-8 border-b-4 border-black pb-8">
-				<div class="metadata font-mono text-sm bg-gray-light/20 border-2 border-black p-4 mb-6 shadow-custom">
-					<div class="mb-2 text-accent-dark font-bold">&gt; accessing_idea_record...</div>
+				<div
+					class="metadata font-mono text-sm bg-gray-light/20 border-2 border-black p-4 mb-6 shadow-custom"
+				>
+					<div class="mb-2 text-accent-dark font-bold">
+						&gt; accessing_idea_record...
+					</div>
 					<div class="flex flex-col gap-1">
-						<div><span class="text-gray-dark font-bold">&gt; created:</span> {formatDate(createdDate)}</div>
-						<div><span class="text-gray-dark font-bold">&gt; last_update:</span> {formatDate(updatedDate)}</div>
-						<div><span class="text-gray-dark font-bold">&gt; status:</span> <span class="text-accent">{status}</span></div>
-						<div><span class="text-gray-dark font-bold">&gt; thoughts:</span> {thoughts.length}</div>
+						<div>
+							<span class="text-gray-dark font-bold"
+								>&gt; created:</span
+							>
+							{formatDate(createdDate)}
+						</div>
+						<div>
+							<span class="text-gray-dark font-bold"
+								>&gt; last_update:</span
+							>
+							{formatDate(updatedDate)}
+						</div>
+						<div>
+							<span class="text-gray-dark font-bold"
+								>&gt; status:</span
+							>
+							<span class="text-accent">{status}</span>
+						</div>
+						<div>
+							<span class="text-gray-dark font-bold"
+								>&gt; thoughts:</span
+							>
+							{thoughts.length}
+						</div>
 					</div>
 				</div>
-				
-				<h1 class="text-4xl md:text-5xl font-bold font-mono uppercase mb-4 leading-none">{title}</h1>
-				<p class="font-body text-lg text-gray-dark leading-relaxed mb-6">{summary}</p>
-				
+
+				<h1
+					class="text-4xl md:text-5xl font-bold font-mono uppercase mb-4 leading-none"
+				>
+					{title}
+				</h1>
+				<p
+					class="font-body text-lg text-gray-dark leading-relaxed mb-6"
+				>
+					{summary}
+				</p>
+
 				<!-- Hashtags -->
 				<div class="flex flex-wrap gap-2 mb-4">
-					{hashtags.map(tag => (
-						<a href={`/mind/tags/${tag.replace('#', '')}`} class="text-sm font-mono px-3 py-1 border-2 border-black bg-white hover:bg-accent hover:text-white transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none no-underline">
-							{tag}
-						</a>
-					))}
+					{
+						hashtags.map((tag) => (
+							<a
+								href={`/mind/tags/${tag.replace("#", "")}`}
+								class="text-sm font-mono px-3 py-1 border-2 border-black bg-white hover:bg-accent hover:text-white transition-all shadow-[2px_2px_0px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none no-underline"
+							>
+								{tag}
+							</a>
+						))
+					}
 				</div>
 
 				<!-- Controls -->
 				<div class="flex gap-4 items-center">
-					<button id="orderToggle" class="text-sm font-mono px-4 py-2 border-2 border-black bg-white hover:bg-gray-light transition-all shadow-custom uppercase font-bold">
+					<button
+						id="orderToggle"
+						class="text-sm font-mono px-4 py-2 border-2 border-black bg-white hover:bg-gray-light transition-all shadow-custom uppercase font-bold"
+					>
 						<span id="orderText">Oldest First</span> ↕
 					</button>
-					<button id="changelogToggle" class="text-sm font-mono px-4 py-2 border-2 border-black bg-accent text-white hover:bg-accent-dark transition-all shadow-custom uppercase font-bold">
+					<button
+						id="changelogToggle"
+						class="text-sm font-mono px-4 py-2 border-2 border-black bg-accent text-white hover:bg-accent-dark transition-all shadow-custom uppercase font-bold"
+					>
 						Changelog →
 					</button>
 				</div>
@@ -72,103 +126,150 @@ const formatDate = (date: Date) => date.toLocaleDateString('en-US', {
 
 			<!-- Thoughts Timeline -->
 			<div id="thoughtsContainer" class="space-y-6 mb-12">
-				{thoughts.map((thought) => (
-					<div class="thought-card border-l-4 border-accent pl-6 py-4" data-date={thought.date.valueOf()}>
-						<div class="flex items-center gap-2 mb-3 font-mono text-sm text-gray">
-							<span class="text-accent-dark font-bold">&gt;</span>
-							<time datetime={thought.date.toISOString()}>{formatDate(thought.date)}</time>
-							{thought.editedDate && (
-								<span class="text-xs text-gray">(edited {formatDate(thought.editedDate)})</span>
-							)}
-						</div>
-						<div class="prose prose-sm max-w-none font-body" set:html={marked.parse(thought.content)} />
-						{thought.hashtags && thought.hashtags.length > 0 && (
-							<div class="flex flex-wrap gap-2 mt-4">
-								{thought.hashtags.map(tag => (
-									<span class="text-xs font-mono px-2 py-1 border border-gray bg-gray-light/20 text-gray-dark">
-										{tag}
+				{
+					thoughts.map((thought) => (
+						<div
+							class="thought-card border-l-4 border-accent pl-6 py-4"
+							data-date={thought.date.valueOf()}
+						>
+							<div class="flex items-center gap-2 mb-3 font-mono text-sm text-gray">
+								<span class="text-accent-dark font-bold">
+									&gt;
+								</span>
+								<time datetime={thought.date.toISOString()}>
+									{formatDate(thought.date)}
+								</time>
+								{thought.editedDate && (
+									<span class="text-xs text-gray">
+										(edited {formatDate(thought.editedDate)}
+										)
 									</span>
-								))}
+								)}
 							</div>
-						)}
-					</div>
-				))}
+							<div
+								class="prose prose-sm max-w-none font-body"
+								set:html={marked.parse(thought.content)}
+							/>
+							{thought.hashtags &&
+								thought.hashtags.length > 0 && (
+									<div class="flex flex-wrap gap-2 mt-4">
+										{thought.hashtags.map((tag) => (
+											<span class="text-xs font-mono px-2 py-1 border border-gray bg-gray-light/20 text-gray-dark">
+												{tag}
+											</span>
+										))}
+									</div>
+								)}
+						</div>
+					))
+				}
 			</div>
 
 			<Comments />
 		</main>
 
 		<!-- Changelog Sidebar -->
-		<div id="changelogSidebar" class="fixed top-0 right-0 h-full w-[400px] bg-white border-l-4 border-black shadow-[-8px_0_0_0_black] transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto">
+		<div
+			id="changelogSidebar"
+			class="fixed top-0 right-0 h-full w-[400px] bg-white border-l-4 border-black shadow-[-8px_0_0_0_black] transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto"
+		>
 			<div class="p-6">
 				<div class="flex justify-between items-center mb-6">
-					<h2 class="text-2xl font-bold font-mono uppercase m-0">Changelog</h2>
-					<button id="closeChangelog" class="text-2xl font-mono hover:text-accent transition-colors">×</button>
+					<h2 class="text-2xl font-bold font-mono uppercase m-0">
+						Changelog
+					</h2>
+					<button
+						id="closeChangelog"
+						class="text-2xl font-mono hover:text-accent transition-colors"
+						>×</button
+					>
 				</div>
-				
+
 				<div class="space-y-4">
-					{changelog.map((entry) => (
-						<div class="border-2 border-black p-4 bg-gray-light/10">
-							<div class="flex items-center gap-2 mb-2">
-								<span class={`text-xs font-mono px-2 py-1 border border-black uppercase font-bold ${
-									entry.action === 'created' ? 'bg-accent text-white' :
-									entry.action === 'thought_added' ? 'bg-gray-light' :
-									entry.action === 'thought_edited' ? 'bg-accent-dark text-white' :
-									'bg-white'
-								}`}>
-									{entry.action.replace('_', ' ')}
-								</span>
-								<time class="text-xs font-mono text-gray">{formatDate(entry.date)}</time>
+					{
+						changelog.map((entry) => (
+							<div class="border-2 border-black p-4 bg-gray-light/10">
+								<div class="flex items-center gap-2 mb-2">
+									<span
+										class={`text-xs font-mono px-2 py-1 border border-black uppercase font-bold ${
+											entry.action === "created"
+												? "bg-accent text-white"
+												: entry.action ===
+													  "thought_added"
+													? "bg-gray-light"
+													: entry.action ===
+														  "thought_edited"
+														? "bg-accent-dark text-white"
+														: "bg-white"
+										}`}
+									>
+										{entry.action.replace("_", " ")}
+									</span>
+									<time class="text-xs font-mono text-gray">
+										{formatDate(entry.date)}
+									</time>
+								</div>
+								{entry.description && (
+									<p class="text-sm font-body text-gray-dark m-0">
+										{entry.description}
+									</p>
+								)}
 							</div>
-							{entry.description && (
-								<p class="text-sm font-body text-gray-dark m-0">{entry.description}</p>
-							)}
-						</div>
-					))}
+						))
+					}
 				</div>
 			</div>
 		</div>
 
 		<!-- Overlay -->
-		<div id="overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
+		<div
+			id="overlay"
+			class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-40"
+		>
+		</div>
 
 		<Footer />
 
 		<script>
 			// Thought ordering toggle
-			const orderToggle = document.getElementById('orderToggle');
-			const orderText = document.getElementById('orderText');
-			const thoughtsContainer = document.getElementById('thoughtsContainer');
+			const orderToggle = document.getElementById("orderToggle");
+			const orderText = document.getElementById("orderText");
+			const thoughtsContainer =
+				document.getElementById("thoughtsContainer");
 			let isOldestFirst = true;
 
-			orderToggle?.addEventListener('click', () => {
+			orderToggle?.addEventListener("click", () => {
 				isOldestFirst = !isOldestFirst;
-				orderText!.textContent = isOldestFirst ? 'Oldest First' : 'Newest First';
-				
+				orderText!.textContent = isOldestFirst
+					? "Oldest First"
+					: "Newest First";
+
 				const thoughts = Array.from(thoughtsContainer!.children);
 				thoughts.reverse();
-				thoughts.forEach(thought => thoughtsContainer!.appendChild(thought));
+				thoughts.forEach((thought) =>
+					thoughtsContainer!.appendChild(thought),
+				);
 			});
 
 			// Changelog sidebar
-			const changelogToggle = document.getElementById('changelogToggle');
-			const closeChangelog = document.getElementById('closeChangelog');
-			const sidebar = document.getElementById('changelogSidebar');
-			const overlay = document.getElementById('overlay');
+			const changelogToggle = document.getElementById("changelogToggle");
+			const closeChangelog = document.getElementById("closeChangelog");
+			const sidebar = document.getElementById("changelogSidebar");
+			const overlay = document.getElementById("overlay");
 
 			const openSidebar = () => {
-				sidebar?.classList.remove('translate-x-full');
-				overlay?.classList.remove('opacity-0', 'pointer-events-none');
+				sidebar?.classList.remove("translate-x-full");
+				overlay?.classList.remove("opacity-0", "pointer-events-none");
 			};
 
 			const closeSidebar = () => {
-				sidebar?.classList.add('translate-x-full');
-				overlay?.classList.add('opacity-0', 'pointer-events-none');
+				sidebar?.classList.add("translate-x-full");
+				overlay?.classList.add("opacity-0", "pointer-events-none");
 			};
 
-			changelogToggle?.addEventListener('click', openSidebar);
-			closeChangelog?.addEventListener('click', closeSidebar);
-			overlay?.addEventListener('click', closeSidebar);
+			changelogToggle?.addEventListener("click", openSidebar);
+			closeChangelog?.addEventListener("click", closeSidebar);
+			overlay?.addEventListener("click", closeSidebar);
 		</script>
 	</body>
 </html>

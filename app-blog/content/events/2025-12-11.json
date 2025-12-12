@@ -846,5 +846,49 @@
     ],
     "severity": "info",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-12T00:46:53.466Z",
+    "eventType": "other",
+    "title": "Admin dashboard accessed by Louis Casinelli Jr",
+    "description": "User accessed the admin dashboard",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "metadata": {
+      "path": "/admin",
+      "method": "GET"
+    },
+    "tags": [
+      "admin",
+      "dashboard",
+      "access"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "timestamp": "2025-12-12T00:48:07.238Z",
+    "eventType": "post_created",
+    "title": "New blog post created: My First Valid Blog Post",
+    "description": "Blog post \"My First Valid Blog Post\" was created",
+    "user": {
+      "name": "Louis Casinelli Jr",
+      "email": "louis@casinelli.io"
+    },
+    "relatedContent": {
+      "type": "blog",
+      "id": "01-valid-post",
+      "title": "My First Valid Blog Post",
+      "url": "/blog/01-valid-post"
+    },
+    "tags": [
+      "blog",
+      "content",
+      "create"
+    ],
+    "severity": "info",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
   }
 ]

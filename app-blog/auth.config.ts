@@ -46,14 +46,14 @@ export default defineConfig({
     async session({ session, token }) {
       // Add GitHub username to session
       if (token?.login) {
-        session.user.username = token.login;
+        session.user.username = token.login as string;
       }
       return session;
     },
     async jwt({ token, profile }) {
       // Add GitHub username to token
       if (profile?.login) {
-        token.login = profile.login;
+        token.login = profile.login as string;
       }
       return token;
     },
